@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DocVisa Tunisie — Vos dossiers de visa, sans erreur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-mark">DV</div>
+      DocVisa Tunisie
+    </div>
+    <a class="nav-cta" href="https://wa.me/21653117158" target="_blank" rel="noopener">
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="eyebrow mono">Assistance dossiers visa — Tunisie</div>
+      <h1 class="headline">Un dossier de visa <em>bien préparé</em> se refuse rarement.</h1>
+      <p class="sub">On prépare votre dossier de A à Z pour la France, l'Italie, l'Espagne, Malte et le Canada — tourisme, travail, études ou regroupement familial. Vous envoyez vos documents, on s'occupe du reste.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://wa.me/21653117158" target="_blank" rel="noopener">
+          Démarrer sur WhatsApp →
+        </a>
+        <a class="btn-ghost" href="#services">Voir les services</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-blob"></div>
+      <div class="float-badge badge-1"><span class="fdot" style="background:var(--navy);"></span>France · Italie · Espagne · Malte · Canada</div>
+      <div class="float-badge badge-2"><span class="fdot" style="background:#22C55E;"></span>100% dossiers vérifiés</div>
+      <div class="float-badge badge-3"><span class="fdot" style="background:var(--brass);"></span>Réponse sous 1h</div>
+
+      <button class="avatar-btn" id="openVideoModal" aria-label="Voir la vidéo de présentation">
+        <div class="avatar-frame">
+          <svg viewBox="0 0 260 340" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="130" cy="325" rx="70" ry="10" fill="var(--navy)" opacity="0.08"/>
+            <path d="M70 180 C70 140, 95 118, 130 118 C165 118, 190 140, 190 180 L200 300 C200 315, 185 320, 130 320 C75 320, 60 315, 60 300 Z" fill="var(--navy)"/>
+            <path d="M112 122 L130 150 L148 122" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M124 132 L136 132 L142 165 L130 250 L118 165 Z" fill="var(--brass)"/>
+            <path d="M78 168 C55 190, 48 230, 55 275" fill="none" stroke="var(--navy)" stroke-width="26" stroke-linecap="round"/>
+            <circle cx="55" cy="278" r="15" fill="#E3B48A"/>
+            <path d="M184 168 C210 160, 228 130, 226 95" fill="none" stroke="var(--navy)" stroke-width="26" stroke-linecap="round"/>
+            <circle cx="226" cy="92" r="15" fill="#E3B48A"/>
+            <rect x="118" y="98" width="24" height="30" rx="10" fill="#E3B48A"/>
+            <circle cx="130" cy="75" r="42" fill="#E3B48A"/>
+            <path d="M90 68 C88 38, 108 20, 130 20 C154 20, 174 38, 172 68 C172 55, 160 42, 130 42 C102 42, 90 55, 90 68 Z" fill="var(--navy)"/>
+            <circle cx="115" cy="78" r="3.6" fill="#16172B"/>
+            <circle cx="147" cy="78" r="3.6" fill="#16172B"/>
+            <path d="M113 94 Q130 106 149 94" fill="none" stroke="#16172B" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="play-chip"><span class="tri"></span>Voir la vidéo de présentation</div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class="video-modal" id="videoModal">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" id="closeVideoModal" aria-label="Fermer">✕</button>
+    <video id="modalVideo" controls playsinline preload="auto">
+      <source src="docvisa-video-bienvenue.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la lecture vidéo.
+    </video>
+  </div>
+</div>
+
+<section class="destinations">
+  <div class="wrap">
+    <div class="section-label mono">Destinations couvertes</div>
+    <h2>Cinq pays, toutes catégories de visa</h2>
+    <div class="stamps">
+      <div class="stamp fr" data-tilt="-6">
+        <svg class="stamp-flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#fff"/><rect width="10" height="20" fill="#0055A4"/><rect x="20" width="10" height="20" fill="#EF4135"/></svg>
+        <span class="flag">RÉPUBLIQUE</span><span class="country">France</span><span class="cat">Toutes catégories</span></div>
+      <div class="stamp it" data-tilt="4">
+        <svg class="stamp-flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#fff"/><rect width="10" height="20" fill="#009246"/><rect x="20" width="10" height="20" fill="#CE2B37"/></svg>
+        <span class="flag">REPUBBLICA</span><span class="country">Italie</span><span class="cat">Toutes catégories</span></div>
+      <div class="stamp es" data-tilt="5">
+        <svg class="stamp-flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></svg>
+        <span class="flag">ESPAÑA</span><span class="country">Espagne</span><span class="cat">Toutes catégories</span></div>
+      <div class="stamp mt" data-tilt="-3">
+        <svg class="stamp-flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="15" height="20" fill="#fff"/><rect x="15" width="15" height="20" fill="#CF142B"/><rect x="1.5" y="1.5" width="6" height="6" fill="#CF142B"/><rect x="2.3" y="2.3" width="4.4" height="4.4" fill="#fff"/></svg>
+        <span class="flag">REPUBBLIKA</span><span class="country">Malte</span><span class="cat">Toutes catégories</span></div>
+      <div class="stamp ca" data-tilt="7">
+        <svg class="stamp-flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#fff"/><rect width="7.5" height="20" fill="#D80621"/><rect x="22.5" width="7.5" height="20" fill="#D80621"/><path d="M15 4.5l1.2 2.6 2.8-.6-1.3 2.5 2.3 1.6-2.6.4.1 2.6-1.5-1.8-1.5 1.8.1-2.6-2.6-.4 2.3-1.6-1.3-2.5 2.8.6z" fill="#D80621"/></svg>
+        <span class="flag">CANADA</span><span class="country">Canada</span><span class="cat">Toutes catégories</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-label mono">Ce qu'on prépare pour vous</div>
+    <h2>Un service complet, pays par pays</h2>
+    <div class="service-grid">
+      <div class="service-card">
+        <h3><span class="dot"></span>Visa France</h3>
+        <p>Court séjour Schengen, visiteur, études, regroupement familial. Constitution du dossier, formulaire, prise de rendez-vous.</p>
+      </div>
+      <div class="service-card">
+        <h3><span class="dot"></span>Visa Italie</h3>
+        <p>Tourisme, travail saisonnier, études. Vérification des justificatifs et mise en forme selon les exigences du consulat.</p>
+      </div>
+      <div class="service-card">
+        <h3><span class="dot"></span>Visa Espagne</h3>
+        <p>Tourisme, étudiant, travail. Constitution du dossier et vérification des justificatifs selon les exigences du consulat.</p>
+      </div>
+      <div class="service-card">
+        <h3><span class="dot"></span>Visa Malte</h3>
+        <p>Court séjour, études, travail. Dossier complet et suivi jusqu'au dépôt.</p>
+      </div>
+      <div class="service-card">
+        <h3><span class="dot"></span>Visa Canada</h3>
+        <p>Visiteur, études (permis d'études), travail temporaire. Formulaires IRCC et pièces justificatives.</p>
+      </div>
+      <div class="service-card">
+        <h3><span class="dot"></span>Timbres et paiements</h3>
+        <p>Timbres fiscaux, frais de dossier, paiements en ligne liés à votre demande, réglés pour vous.</p>
+      </div>
+      <div class="service-card">
+        <h3><span class="dot"></span>Lettres et attestations</h3>
+        <p>Lettre de motivation, attestation de prise en charge, attestation d'hébergement — rédigées et mises en forme selon les standards consulaires.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label mono">Nos engagements</div>
+    <h2>Ce que vous pouvez attendre de nous, sans exception</h2>
+    <div class="engage-grid">
+      <div class="engage-card"><div class="mark">→</div><strong>Relecture avant dépôt</strong><p>Chaque dossier est relu une seconde fois avant d'être remis, pour repérer toute pièce manquante ou incohérence.</p></div>
+      <div class="engage-card"><div class="mark">→</div><strong>Confidentialité totale</strong><p>Vos documents personnels ne sont partagés avec personne et sont supprimés une fois le dossier déposé.</p></div>
+      <div class="engage-card"><div class="mark">→</div><strong>Transparence sur les prix</strong><p>Aucun frais caché : le tarif du service est communiqué avant de commencer, séparément des frais de consulat.</p></div>
+      <div class="engage-card"><div class="mark">→</div><strong>Un seul interlocuteur</strong><p>Du premier message WhatsApp jusqu'au dossier finalisé, vous parlez toujours à la même personne.</p></div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="section-label mono">Où nous trouver</div>
+        <h3>Ariana, Tunisie</h3>
+        <p>Service basé au publinet d'Ariana. Échanges à distance sur WhatsApp, avec possibilité de passage sur place pour les documents originaux ou signatures.</p>
+      </div>
+      <div class="info-card">
+        <div class="section-label mono">Disponibilité</div>
+        <h3>8h – 20h, tous les jours ouvrés</h3>
+        <p>Réponse rapide sur WhatsApp de 8h à 20h. En dehors de ces horaires, votre message est traité dès la reprise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg">
+  <div class="wrap">
+    <div class="section-label mono">Comment ça marche</div>
+    <h2>Trois étapes, un dossier propre</h2>
+    <div class="process-list">
+      <div class="process-item">
+        <div class="num">01</div>
+        <div><h3>Vous nous écrivez sur WhatsApp</h3><p>Dites-nous le pays et le type de visa. On vous répond avec la liste exacte des documents nécessaires.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="num">02</div>
+        <div><h3>Vous envoyez vos documents</h3><p>Par WhatsApp ou en personne. On vérifie, complète et met en forme chaque pièce.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="num">03</div>
+        <div><h3>Dossier prêt à déposer</h3><p>Formulaires remplis, paiements effectués, rendez-vous pris si nécessaire. Vous n'avez plus qu'à vous présenter.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <div class="section-label mono">Qui prépare votre dossier</div>
+    <h2>La rigueur d'un ingénieur, appliquée à vos documents.</h2>
+    <div class="about-grid">
+      <div>
+        <div class="about-badge">DV</div>
+        <h3>Basé au publinet, au contact du dossier chaque jour</h3>
+        <p>Je traite déjà les paiements en ligne, les timbres et les rapports administratifs au quotidien. La préparation de dossiers visa applique la même exigence : chaque pièce vérifiée, chaque formulaire relu avant envoi.</p>
+        <p>Formation d'ingénieur informatique — habitué à suivre des procédures strictes et à ne rien laisser au hasard, ce qui compte particulièrement pour un dossier consulaire.</p>
+      </div>
+      <div class="about-points">
+        <div class="about-point"><div class="mark">01</div><p>Vérification systématique de la liste de documents avant tout dépôt, pour éviter les refus liés à un dossier incomplet.</p></div>
+        <div class="about-point"><div class="mark">02</div><p>Un seul interlocuteur du premier message jusqu'au dossier finalisé — pas de transfert entre plusieurs personnes.</p></div>
+        <div class="about-point"><div class="mark">03</div><p>Confidentialité de vos documents personnels et suppression des copies une fois le dossier déposé.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials alt-bg">
+  <div class="wrap">
+    <div class="section-label mono">Avis clients</div>
+    <h2>Bientôt vos témoignages ici.</h2>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <h3>Le service démarre tout juste</h3>
+      <p>Aucun avis inventé ici — les premiers témoignages seront ajoutés dès que les premiers dossiers seront déposés. Soyez parmi les premiers clients.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label mono">Questions fréquentes</div>
+    <h2>Ce qu'on vous demande le plus souvent</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Est-ce que vous garantissez l'obtention du visa ?</summary>
+        <div class="faq-a">Non. La décision finale appartient uniquement au consulat ou à l'ambassade. Ce que je garantis, c'est un dossier complet, correctement rempli et conforme aux exigences demandées — ce qui réduit fortement le risque de refus lié à un problème de dossier.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Combien de temps faut-il pour préparer un dossier ?</summary>
+        <div class="faq-a">Cela dépend du pays et du type de visa, et surtout de la rapidité avec laquelle vous fournissez vos documents. On vous donne un délai précis dès le premier échange sur WhatsApp.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Quels documents dois-je fournir ?</summary>
+        <div class="faq-a">La liste varie selon le pays (France, Italie, Espagne, Malte, Canada) et la catégorie de visa (tourisme, travail, études, regroupement familial). Écrivez-nous votre situation sur WhatsApp, on vous envoie la liste exacte.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Comment se passe le paiement de vos services ?</summary>
+        <div class="faq-a">Le tarif est communiqué avant de commencer, selon le pays et la complexité du dossier. Les frais de timbre et de consulat sont séparés et vous sont indiqués clairement.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Dois-je venir en personne ou tout peut se faire à distance ?</summary>
+        <div class="faq-a">La majorité des échanges se fait par WhatsApp. Un passage en personne peut être nécessaire pour certains documents originaux ou signatures.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="section-label mono" style="color:var(--brass);">Pourquoi nous</div>
+    <h2>Le sérieux d'un dossier fait la différence</h2>
+    <div class="trust-grid">
+      <div class="trust-card"><div class="big">5</div><p>Destinations couvertes : France, Italie, Espagne, Malte, Canada</p></div>
+      <div class="trust-card"><div class="big">100%</div><p>Dossiers vérifiés avant dépôt, aucune pièce manquante</p></div>
+      <div class="trust-card"><div class="big">1</div><p>Seul contact du début à la fin, sur WhatsApp</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <div class="section-label mono" style="text-align:center;">Prêt à commencer</div>
+    <h2>Envoyez-nous un message, on prépare votre dossier.</h2>
+    <a class="btn-primary" href="https://wa.me/21653117158" target="_blank" rel="noopener">
+      Écrire sur WhatsApp →
+    </a>
+    <div class="contact-detail mono">+216 53 117 158 · Ariana, Tunisie</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:10px;">
+    <div>DocVisa Tunisie</div>
+    <div>Assistance documentaire — n'est pas un organisme consulaire officiel</div>
+  </div>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>
