@@ -108,6 +108,20 @@
     gap:40px;
     align-items:center;
   }
+  .hero-copy,
+  .hero-visual{
+    opacity:0;
+    transform:translateY(24px) scale(0.98);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .hero.in-view .hero-copy,
+  .hero.in-view .hero-visual{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+  .hero .hero-visual{
+    transition-delay:.12s;
+  }
   .eyebrow{
     font-size:12px;color:var(--brass);
     display:flex;align-items:center;gap:10px;margin-bottom:22px;
@@ -386,19 +400,59 @@
     backdrop-filter:blur(10px);
     border-radius:24px;
     padding:30px 28px;
-    border:1px solid rgba(13,35,66,0.08);
+    border:2px solid rgba(13,35,66,0.14);
     text-align:center;
-    transition:transform .3s cubic-bezier(.2, .8, .2, 1), box-shadow .3s cubic-bezier(.2, .8, .2, 1), border-color .3s ease;
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease, box-shadow .3s cubic-bezier(.2, .8, .2, 1), border-color .3s ease;
+    touch-action: manipulation;
   }
   body[data-theme="dark"] .service-card{
     background:rgba(255,255,255,0.06);
     border:1px solid rgba(255,255,255,0.12);
   }
   .service-card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 20px 40px -15px rgba(13,35,66,0.12);
+    transform:translateY(-10px) scale(1.07);
+    box-shadow:0 40px 70px -26px rgba(13,35,66,0.24);
+    border-color:var(--brass);
+    cursor:pointer;
+    outline:2px solid rgba(197,155,99,0.22);
+  }
+  .service-card:active{
+    transform:translateY(-8px) scale(1.07);
+  }
+  .pricing-card{
+    background:var(--paper-warm);
+    border:1px solid rgba(13,35,66,0.08);
+    border-radius:24px;
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .pricing-card:hover{
+    transform:translateY(-8px) scale(1.04);
+    box-shadow:0 32px 60px -26px rgba(13,35,66,0.2);
     border-color:var(--brass);
   }
+  .services h2{
+    transition:transform .3s ease;
+  }
+  .services h2:hover{
+    transform:scale(1.03);
+  }
+  .service-grid.in-view .service-card{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .service-grid.in-view .service-card:nth-child(1){transition-delay:.08s;}
+  .service-grid.in-view .service-card:nth-child(2){transition-delay:.16s;}
+  .service-grid.in-view .service-card:nth-child(3){transition-delay:.24s;}
+  .service-grid.in-view .service-card:nth-child(4){transition-delay:.32s;}
+  .service-grid.in-view .service-card:nth-child(5){transition-delay:.4s;}
+  .service-grid.in-view .service-card:nth-child(6){transition-delay:.48s;}
+  .service-grid.in-view .service-card:nth-child(7){transition-delay:.56s;}
   .service-card h3{
     font-size:19px;color:var(--ink);margin-bottom:10px;
     display:flex;align-items:center;justify-content:center;gap:10px;
@@ -501,6 +555,13 @@
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:18px;
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .testimonial-grid.in-view{
+    opacity:1;
+    transform:translateY(0);
   }
   .testi-card{
     background:rgba(255,255,255,0.82);
@@ -535,6 +596,12 @@
     display:flex;
     flex-direction:column;
     gap:12px;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .pricing-card:hover{
+    transform:translateY(-8px) scale(1.04);
+    box-shadow:0 32px 60px -26px rgba(13,35,66,0.2);
+    border-color:var(--brass);
   }
   body[data-theme="dark"] .pricing-card{
     background:rgba(255,255,255,0.06);
@@ -570,6 +637,13 @@
     padding:36px;
     color:#fff;
     box-shadow:0 24px 60px -24px rgba(13,35,66,0.35);
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .consultation.in-view .consultation-card{
+    opacity:1;
+    transform:translateY(0);
   }
   .consultation-card .section-label{color:var(--brass-light);margin-bottom:12px;}
   .consultation-card h2{color:#fff;max-width:720px;}
@@ -809,7 +883,12 @@
     .trust-card .big{font-size:32px;}
     .final-cta .btn-primary{padding:16px 28px;font-size:15px;}
   }
+  @keyframes pulse-button{
+    0%,100%{transform:translateY(0);box-shadow:0 20px 48px -24px rgba(13,35,66,0.3);}
+    50%{transform:translateY(-2px);box-shadow:0 24px 60px -30px rgba(13,35,66,0.35);}
+  }
+
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
-    *{transition:none !important;}
+    *{transition:none !important;animation:none !important;}
   }

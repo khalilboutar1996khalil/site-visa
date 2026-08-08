@@ -1,16 +1,28 @@
-  var stampsEl = document.querySelector('.stamps');
-  if (stampsEl && 'IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries){
+  var animatedSections = [
+    document.querySelector('.hero'),
+    document.querySelector('.service-grid'),
+    document.querySelector('.consultation'),
+    document.querySelector('.testimonial-grid'),
+    document.querySelector('.stamps')
+  ].filter(Boolean);
+
+  if (animatedSections.length && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if (entry.isIntersecting) {
           entry.target.classList.add('in-view');
-          io.unobserve(entry.target);
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.35 });
-    io.observe(stampsEl);
-  } else if (stampsEl) {
-    stampsEl.classList.add('in-view');
+
+    animatedSections.forEach(function(section){
+      observer.observe(section);
+    });
+  } else {
+    animatedSections.forEach(function(section){
+      section.classList.add('in-view');
+    });
   }
 
   // Theme toggle
