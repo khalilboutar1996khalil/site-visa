@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DocVisa Tunisie — Vos dossiers de visa, sans erreur</title>
+<meta name="description" content="Préparation de dossiers de visa en Tunisie pour la France, l'Italie, l'Espagne, Malte et le Canada. Liste de documents personnalisée, tarif annoncé d'avance, un seul interlocuteur sur WhatsApp.">
+<meta name="theme-color" content="#0D2342">
+<link rel="canonical" href="https://docvisa-tunisie.tn/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_TN">
+<meta property="og:site_name" content="DocVisa Tunisie">
+<meta property="og:title" content="DocVisa Tunisie — Vos dossiers de visa, sans erreur">
+<meta property="og:description" content="France, Italie, Espagne, Malte, Canada. Simulez votre dossier en 3 clics : liste des pièces à fournir, tarif et délai, immédiatement.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230D2342'/%3E%3Ctext x='32' y='42' font-family='Poppins,Arial,sans-serif' font-size='26' font-weight='700' fill='%23E5D0AC' text-anchor='middle'%3EDV%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -12,10 +22,19 @@
 
 <header>
   <div class="wrap">
-    <div class="brand">
+    <a class="brand" href="#top">
       <div class="brand-mark">DV</div>
       DocVisa Tunisie
-    </div>
+    </a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Navigation principale">
+      <a href="#services">Services</a>
+      <a href="#process">Comment ça marche</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#consultation">Simulateur</a>
+      <a href="#faq">Questions</a>
+    </nav>
+
     <div class="header-actions">
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Basculer vers le thème sombre" aria-pressed="false">
         <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
@@ -24,29 +43,37 @@
       <a class="nav-cta" href="https://wa.me/21653117158" target="_blank" rel="noopener">
         WhatsApp
       </a>
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="siteNav">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="top">
   <div class="wrap">
     <div class="hero-copy">
       <div class="eyebrow mono">Assistance dossiers visa — Tunisie</div>
       <h1 class="headline">Un dossier de visa <em>bien préparé</em> se refuse rarement.</h1>
       <p class="sub">On prépare votre dossier de A à Z pour la France, l'Italie, l'Espagne, Malte et le Canada — tourisme, travail, études ou regroupement familial. Vous envoyez vos documents, on s'occupe du reste.</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="https://wa.me/21653117158" target="_blank" rel="noopener">
-          Démarrer sur WhatsApp →
+        <a class="btn-primary" href="#consultation">
+          Voir mon tarif et mes documents →
         </a>
-        <a class="btn-ghost" href="#services">Voir les services</a>
+        <a class="btn-ghost" href="https://wa.me/21653117158" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
       </div>
+      <p class="hero-reassure">
+        <span>Gratuit et sans engagement</span>
+        <span>Réponse en moins d'une heure, 8h–20h</span>
+        <span>Tarif annoncé avant de commencer</span>
+      </p>
     </div>
 
     <div class="hero-visual">
       <div class="hero-blob"></div>
       <div class="float-badge badge-1"><span class="fdot" style="background:var(--navy);"></span>France · Italie · Espagne · Malte · Canada</div>
       <div class="float-badge badge-2"><span class="fdot" style="background:#22C55E;"></span>100% dossiers vérifiés</div>
-      <div class="float-badge badge-3"><span class="fdot" style="background:var(--brass);"></span>Réponse sous 1h</div>
+      <div class="float-badge badge-3"><span class="fdot" style="background:var(--brass);"></span>Réponse sous 1h · 8h–20h</div>
 
       <button class="avatar-btn" id="openVideoModal" aria-label="Voir la vidéo de présentation">
         <div class="avatar-frame">
@@ -87,6 +114,7 @@
   <div class="wrap">
     <div class="section-label mono">Destinations couvertes</div>
     <h2>Cinq pays, toutes catégories de visa</h2>
+    <p class="section-hint">👆 Cliquez sur un pays pour lancer le simulateur avec cette destination.</p>
     <div class="stamps">
       <div class="stamp fr" data-tilt="-6">
         <svg class="stamp-flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#fff"/><rect width="10" height="20" fill="#0055A4"/><rect x="20" width="10" height="20" fill="#EF4135"/></svg>
@@ -170,7 +198,7 @@
   </div>
 </section>
 
-<section class="alt-bg">
+<section class="alt-bg" id="process">
   <div class="wrap">
     <div class="section-label mono">Comment ça marche</div>
     <h2>Trois étapes, un dossier propre</h2>
@@ -211,68 +239,89 @@
   </div>
 </section>
 
-<section class="testimonials alt-bg">
+<section class="reasons alt-bg" id="refus">
   <div class="wrap">
-    <div class="section-label mono">Avis clients</div>
-    <h2>Des dossiers plus solides grâce à une préparation claire et rigoureuse.</h2>
-    <div class="testimonial-grid">
-      <article class="testi-card">
-        <div class="stars">★★★★★</div>
-        <h3>« Un accompagnement très sérieux »</h3>
-        <p>Le dossier a été vérifié pièce par pièce avant le dépôt. Tout était bien organisé, ce qui m’a rassuré.</p>
-        <span class="client">— A. Ben Ali</span>
+    <div class="section-label mono">À savoir avant de déposer</div>
+    <h2>Les cinq motifs de refus qu'on peut éviter ensemble</h2>
+    <p class="section-hint">La plupart des refus ne viennent pas de votre profil, mais de la façon dont le dossier est monté. Voici ce qu'on vérifie systématiquement.</p>
+    <div class="reason-grid">
+      <article class="reason-card">
+        <div class="reason-num mono">01</div>
+        <h3>Pièce manquante ou périmée</h3>
+        <p>Un extrait CNSS de plus de 3 mois, une assurance qui ne couvre pas toute la durée, un passeport à moins de 6 mois de validité. Le consulat ne vous rappelle pas : il refuse.</p>
       </article>
-      <article class="testi-card">
-        <div class="stars">★★★★★</div>
-        <h3>« Réponse rapide et documents clairs »</h3>
-        <p>J’ai reçu une liste précise des pièces à fournir et tout a été fait dans le bon ordre.</p>
-        <span class="client">— M. Khelifi</span>
+      <article class="reason-card">
+        <div class="reason-num mono">02</div>
+        <h3>Incohérence entre les documents</h3>
+        <p>Des dates de congé qui ne correspondent pas aux réservations, un salaire déclaré différent du relevé bancaire. C'est le premier signal d'alerte pour un agent consulaire.</p>
       </article>
-      <article class="testi-card">
-        <div class="stars">★★★★★</div>
-        <h3>« Très rassurant pour un premier dossier »</h3>
-        <p>Je ne savais pas par où commencer. Le suivi m’a permis de faire les bons choix dès le début.</p>
-        <span class="client">— S. Trabelsi</span>
+      <article class="reason-card">
+        <div class="reason-num mono">03</div>
+        <h3>Ressources jugées insuffisantes</h3>
+        <p>Un compte alimenté d'un coup juste avant le dépôt est mal perçu. On regarde vos relevés à l'avance et on vous dit comment présenter votre situation réelle.</p>
+      </article>
+      <article class="reason-card">
+        <div class="reason-num mono">04</div>
+        <h3>Motif de séjour mal expliqué</h3>
+        <p>Une lettre vague ou copiée d'internet dessert le dossier. On rédige un motif précis, daté et cohérent avec vos justificatifs.</p>
+      </article>
+      <article class="reason-card">
+        <div class="reason-num mono">05</div>
+        <h3>Doute sur le retour en Tunisie</h3>
+        <p>C'est le motif de refus le plus fréquent en court séjour. Emploi, famille, biens, études en cours : on met en avant tout ce qui vous rattache au pays.</p>
+      </article>
+      <article class="reason-card reason-card-cta">
+        <h3>Votre situation est particulière ?</h3>
+        <p>Refus antérieur, profil sans activité, premier voyage : dites-le nous, ce sont justement les dossiers qui demandent le plus de préparation.</p>
+        <a class="btn-ghost" href="#consultation">Décrire ma situation →</a>
       </article>
     </div>
   </div>
 </section>
 
-<section class="pricing">
+<section class="pricing" id="tarifs">
   <div class="wrap">
     <div class="section-label mono">Tarifs transparents</div>
-    <h2>Des offres simples selon la complexité du dossier</h2>
+    <h2>Le prix complet, affiché avant de commencer</h2>
+    <p class="section-hint">Ces tarifs couvrent notre travail de préparation. Ils <strong>ne comprennent pas</strong> les frais de consulat, de centre de dépôt (TLS, VFS, Capago…) ni les timbres — ceux-là sont fixés par les autorités et vous sont indiqués séparément, sans marge de notre part.</p>
     <div class="pricing-grid">
       <article class="pricing-card">
-        <div class="price-tag">Visa simple</div>
-        <h3>À partir de 80 TND</h3>
-        <p>Pour un dossier standard tourisme ou visiteur.</p>
+        <div class="price-tag">Tourisme / Court séjour</div>
+        <h3>80 TND</h3>
+        <p class="price-note">100 TND pour le Canada (dépôt sur le portail IRCC)</p>
         <ul>
-          <li>Liste précise des documents</li>
-          <li>Vérification du formulaire</li>
-          <li>Préparation du dossier complet</li>
+          <li>Liste de documents adaptée à votre profil</li>
+          <li>Formulaire officiel rempli et relu</li>
+          <li>Mise en forme complète du dossier</li>
+          <li>Délai : 24h à 48h</li>
         </ul>
       </article>
       <article class="pricing-card featured">
-        <div class="price-tag">Visa étudiant / travail</div>
-        <h3>À partir de 120 TND</h3>
-        <p>Pour les demandes plus détaillées et les justificatifs complémentaires.</p>
+        <div class="price-tag">Études / Travail</div>
+        <h3>120 TND</h3>
+        <p class="price-note">150 TND pour le Canada (permis d'études ou de travail)</p>
         <ul>
-          <li>Documents spécifiques au pays</li>
-          <li>Rédaction d’attestations</li>
-          <li>Suivi jusqu’au dépôt</li>
+          <li>Tout ce qui est inclus dans l'offre tourisme</li>
+          <li>Justificatifs spécifiques au pays et à l'école</li>
+          <li>Rédaction des lettres et attestations</li>
+          <li>Délai : 24h à 48h (48h à 72h Canada)</li>
         </ul>
       </article>
       <article class="pricing-card">
-        <div class="price-tag">Dossier complexe</div>
-        <h3>Sur devis</h3>
-        <p>Pour les situations particulières ou les dossiers sensibles.</p>
+        <div class="price-tag">Regroupement familial</div>
+        <h3>180 TND</h3>
+        <p class="price-note">Même tarif pour toutes les destinations</p>
         <ul>
-          <li>Analyse personnalisée</li>
-          <li>Préparation complète</li>
-          <li>Conseil avant chaque étape</li>
+          <li>Vérification des actes d'état civil</li>
+          <li>Coordination avec la personne qui accueille</li>
+          <li>Dossier de ressources et de logement</li>
+          <li>Délai : 48h à 72h</li>
         </ul>
       </article>
+    </div>
+    <div class="pricing-foot">
+      <p><strong>Situation particulière ?</strong> Refus antérieur, dossier urgent, plusieurs personnes dans la même demande : le tarif est convenu au cas par cas et annoncé avant tout début de travail.</p>
+      <p class="legal-note">DocVisa Tunisie est un service privé d'assistance documentaire. Nous ne sommes ni un consulat, ni une ambassade, ni un intermédiaire agréé auprès d'eux, et nous n'avons aucune influence sur la décision finale.</p>
     </div>
   </div>
 </section>
@@ -280,38 +329,124 @@
 <section class="consultation" id="consultation">
   <div class="wrap">
     <div class="consultation-card">
-      <div class="section-label mono">Demande rapide</div>
-      <h2>Obtenez une première réponse en moins d’une heure</h2>
-      <p>Indiquez votre destination, votre projet et votre situation pour recevoir un premier conseil clair sur WhatsApp.</p>
+      <div class="section-label mono">Simulateur & Demande</div>
+      <h2>Simulez votre dossier en 3 clics</h2>
+      <p>Répondez à trois questions et vous verrez immédiatement le tarif, le délai et la liste des pièces à réunir. Aucune inscription, aucun paiement à cette étape.</p>
+
+      <div class="sim-progress" id="simProgress">
+        <div class="sim-progress-bar"><span id="simProgressFill"></span></div>
+        <span class="sim-progress-text" id="simProgressText" role="status" aria-live="polite">0 réponse sur 3 — commencez par la destination</span>
+      </div>
+
       <form class="consultation-form" id="consultationForm">
-        <div class="field-row">
+        <div class="field-grid">
           <label>
-            <span>Nom</span>
-            <input type="text" name="name" placeholder="Votre prénom" required>
+            <span>1. Destination</span>
+            <select name="destination" id="simDestination" required>
+              <option value="">Choisir la destination</option>
+              <option value="France">France 🇫🇷</option>
+              <option value="Italie">Italie 🇮🇹</option>
+              <option value="Espagne">Espagne 🇪🇸</option>
+              <option value="Malte">Malte 🇲🇹</option>
+              <option value="Canada">Canada 🇨🇦</option>
+            </select>
           </label>
           <label>
-            <span>Destination</span>
-            <select name="destination" required>
-              <option value="">Choisir</option>
-              <option value="France">France</option>
-              <option value="Italie">Italie</option>
-              <option value="Espagne">Espagne</option>
-              <option value="Malte">Malte</option>
-              <option value="Canada">Canada</option>
+            <span>2. Type de visa</span>
+            <select name="visaType" id="simVisaType" required>
+              <option value="">Choisir le type de visa</option>
+              <option value="tourisme">Tourisme / Court séjour Schengen</option>
+              <option value="etudes">Études / Permis d'études</option>
+              <option value="travail">Travail / Affaires</option>
+              <option value="regroupement">Regroupement familial</option>
+            </select>
+          </label>
+          <label>
+            <span>3. Votre situation professionnelle</span>
+            <select name="profile" id="simProfile" required>
+              <option value="">Choisir votre profil</option>
+              <option value="salarie">Salarié / Fonctionnaire (déclaré CNSS)</option>
+              <option value="gerant">Gérant / Chef d'entreprise / Artisan</option>
+              <option value="liberale">Profession libérale (médecin, avocat…)</option>
+              <option value="etudiant">Étudiant / Élève</option>
+              <option value="autre">Autre (sans activité, retraité…)</option>
+            </select>
+          </label>
+          <label>
+            <span>Avez-vous déjà eu un refus ? <em class="opt">facultatif</em></span>
+            <select name="refusal" id="simRefusal">
+              <option value="">Préférer ne pas répondre</option>
+              <option value="non">Non, c'est ma première demande</option>
+              <option value="non-deja-obtenu">Non, j'ai déjà obtenu un visa</option>
+              <option value="oui-meme-pays">Oui, pour ce même pays</option>
+              <option value="oui-autre-pays">Oui, pour un autre pays</option>
             </select>
           </label>
         </div>
-        <label>
-          <span>Votre besoin</span>
-          <textarea name="message" rows="4" placeholder="Ex : visa tourisme, étudiant, travail, regroupement familial..."></textarea>
-        </label>
-        <button class="btn-primary" type="submit">Envoyer sur WhatsApp</button>
+
+        <!-- Dynamic Results Area -->
+        <div class="simulator-result" id="simulatorResult">
+          <div class="result-header">
+            <h3>📋 Votre plan de préparation estimé</h3>
+          </div>
+          <div class="result-body">
+            <div class="result-meta">
+              <div class="meta-item">
+                <span class="meta-label">Tarif d'accompagnement</span>
+                <span class="meta-val" id="resultPrice">—</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Délai de préparation</span>
+                <span class="meta-val" id="resultDelay">—</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Pièces à réunir</span>
+                <span class="meta-val" id="resultCount">—</span>
+              </div>
+            </div>
+
+            <div class="result-note" id="resultNote" hidden></div>
+
+            <div class="documents-section">
+              <div class="doc-head">
+                <h4>Cochez ce que vous avez déjà :</h4>
+                <span class="doc-progress mono" id="docProgress">0 / 0</span>
+              </div>
+              <ul class="doc-list" id="resultDocs">
+                <!-- Populated dynamically via JS -->
+              </ul>
+              <div class="doc-actions">
+                <button type="button" class="btn-mini" id="copyDocsBtn">📋 Copier la liste</button>
+                <button type="button" class="btn-mini" id="printDocsBtn">🖨️ Imprimer / PDF</button>
+              </div>
+              <p class="doc-disclaimer">⚠️ Cette liste est indicative et représente les pièces les plus souvent demandées. Le consulat reste seul à fixer la liste définitive — nous la confirmons avec vous lors de notre échange.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-block">
+          <label class="full-width">
+            <span>Votre nom, pour qu'on sache à qui on répond</span>
+            <input type="text" name="name" placeholder="Prénom et nom" required>
+          </label>
+          <label class="full-width">
+            <span>Une précision à nous donner ? <em class="opt">facultatif</em></span>
+            <textarea name="message" id="simMessage" rows="2" placeholder="Ex : voyage prévu le 15 mars, j'ai besoin d'une traduction assermentée…"></textarea>
+          </label>
+        </div>
+
+        <button class="btn-primary" type="submit" id="submitBtn">
+          <span>Envoyer mon dossier sur WhatsApp →</span>
+        </button>
+        <p class="form-foot" id="formFoot">
+          Votre récapitulatif s'ouvre pré-rempli dans WhatsApp — vous relisez avant d'envoyer. Rien n'est enregistré sur ce site.
+        </p>
       </form>
     </div>
   </div>
 </section>
 
-<section>
+<section id="faq">
   <div class="wrap">
     <div class="section-label mono">Questions fréquentes</div>
     <h2>Ce qu'on vous demande le plus souvent</h2>
@@ -335,6 +470,30 @@
       <details class="faq-item">
         <summary>Dois-je venir en personne ou tout peut se faire à distance ?</summary>
         <div class="faq-a">La majorité des échanges se fait par WhatsApp. Un passage en personne peut être nécessaire pour certains documents originaux ou signatures.</div>
+      </details>
+      <details class="faq-item">
+        <summary>J'ai déjà eu un refus. Est-ce que ça vaut encore la peine ?</summary>
+        <div class="faq-a">Oui, un refus n'est pas définitif — mais redéposer le même dossier tel quel mène presque toujours au même résultat. Envoyez-nous la lettre de refus : le motif y est indiqué, et c'est à partir de lui qu'on reconstruit le dossier en corrigeant précisément ce qui a bloqué. Dites-le nous dès le premier message, ça change la façon de monter le dossier.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Et si mon visa est refusé malgré votre préparation ? Suis-je remboursé ?</summary>
+        <div class="faq-a">Notre tarif rémunère la préparation du dossier, pas le résultat — il reste donc dû même en cas de refus, puisque le travail a bien été effectué. En revanche, si le refus est motivé par une erreur ou un oubli de notre part sur une pièce que nous devions préparer, nous reprenons le dossier gratuitement pour la nouvelle demande. Les frais de consulat, eux, ne sont jamais remboursables par personne, quelle que soit l'issue.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Que deviennent mes documents personnels ?</summary>
+        <div class="faq-a">Ils servent uniquement à monter votre dossier. Ils ne sont transmis à aucun tiers, ne sont ni revendus ni utilisés à d'autres fins, et les copies sont supprimées de nos appareils une fois le dossier déposé. Ce site ne collecte rien : le formulaire ci-dessus ne fait qu'ouvrir un message WhatsApp que vous relisez avant d'envoyer.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Vos tarifs incluent-ils les frais de consulat et les timbres ?</summary>
+        <div class="faq-a">Non, et c'est important : le tarif affiché (80 à 180 TND) couvre uniquement notre travail de préparation. Les frais de visa, les frais du centre de dépôt et les timbres fiscaux sont fixés par les autorités, varient selon le pays, et vous sont communiqués au montant exact — nous ne prenons aucune marge dessus.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Prenez-vous le rendez-vous au consulat à ma place ?</summary>
+        <div class="faq-a">Oui, quand le pays le permet, nous nous chargeons de la prise de rendez-vous en ligne. À noter que les délais d'obtention d'un créneau dépendent entièrement du centre de dépôt et peuvent aller de quelques jours à plusieurs semaines en haute saison — c'est indépendant de notre travail, mais on vous prévient dès le départ de ce à quoi vous attendre.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Êtes-vous un organisme officiel ou agréé par les consulats ?</summary>
+        <div class="faq-a">Non. DocVisa Tunisie est un service privé d'assistance documentaire, indépendant des consulats et des ambassades. Nous n'avons aucun contact privilégié ni influence sur les décisions, et nous vous conseillons de vous méfier de toute personne qui vous promettrait le contraire. Notre valeur est ailleurs : un dossier complet, cohérent et conforme.</div>
       </details>
     </div>
   </div>

@@ -265,7 +265,7 @@
   body[data-theme="dark"] .engage-card,
   body[data-theme="dark"] .faq-item,
   body[data-theme="dark"] .info-card,
-  body[data-theme="dark"] .testi-card,
+  body[data-theme="dark"] .reason-card,
   body[data-theme="dark"] .trust-card{
     background:rgba(255,255,255,0.06);
     border-color:rgba(255,255,255,0.08);
@@ -550,9 +550,9 @@
   .trust-card p{margin:0;font-size:14px;color:rgba(245,241,231,0.85);}
   body[data-theme="dark"] .trust-card p{color:rgba(255,255,255,0.77);}
 
-  /* Testimonials */
-  .testimonial-grid{
-    margin-top:44px;
+  /* Motifs de refus */
+  .reason-grid{
+    margin-top:40px;
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:18px;
@@ -560,26 +560,47 @@
     transform:translateY(20px);
     transition:opacity .8s ease, transform .8s ease;
   }
-  .testimonial-grid.in-view{
+  .reason-grid.in-view{
     opacity:1;
     transform:translateY(0);
   }
-  .testi-card{
+  .reason-card{
     background:rgba(255,255,255,0.82);
     border:1px solid rgba(13,35,66,0.08);
     border-radius:24px;
-    padding:24px;
+    padding:26px 24px;
     box-shadow:0 16px 36px -20px rgba(13,35,66,0.16);
+    transition:transform .3s ease, border-color .3s ease;
   }
-  body[data-theme="dark"] .testi-card{
+  .reason-card:hover{transform:translateY(-4px);border-color:var(--brass);}
+  body[data-theme="dark"] .reason-card{
     background:rgba(255,255,255,0.06);
     border-color:rgba(255,255,255,0.08);
   }
-  .stars{color:var(--brass);font-size:16px;letter-spacing:0.2em;margin-bottom:10px;}
-  .testi-card h3{font-size:18px;color:var(--navy);margin-bottom:8px;}
-  body[data-theme="dark"] .testi-card h3{color:#E8EFFB;}
-  .testi-card p{font-size:14px;color:#5B5C72;line-height:1.7;}
-  .client{display:inline-block;margin-top:12px;font-size:13px;font-weight:700;color:var(--brass);}
+  .reason-num{
+    font-size:12px;color:var(--brass);font-weight:600;
+    display:block;margin-bottom:10px;
+  }
+  .reason-card h3{font-size:17px;color:var(--navy);margin-bottom:8px;}
+  body[data-theme="dark"] .reason-card h3{color:#E8EFFB;}
+  .reason-card p{font-size:14px;color:#5B5C72;line-height:1.7;}
+  body[data-theme="dark"] .reason-card p{color:#A8B9D1;}
+  .reason-card-cta,
+  body[data-theme="dark"] .reason-card-cta{
+    background:linear-gradient(135deg, #0D2342, #1B355A);
+    border-color:var(--brass);
+    display:flex;flex-direction:column;gap:10px;justify-content:center;
+  }
+  .reason-card-cta:hover{border-color:var(--brass-light);}
+  .reason-card-cta h3,
+  body[data-theme="dark"] .reason-card-cta h3{color:#fff;}
+  .reason-card-cta p,
+  body[data-theme="dark"] .reason-card-cta p{color:rgba(255,255,255,0.78);}
+  .reason-card-cta .btn-ghost{
+    align-self:flex-start;margin-top:6px;
+    color:var(--brass-light);border-color:rgba(229,208,172,0.5);
+  }
+  .reason-card-cta .btn-ghost:hover{border-color:var(--brass-light);background:rgba(255,255,255,0.08);}
 
   /* Pricing */
   .pricing{background:var(--paper);}
@@ -650,7 +671,19 @@
   .consultation-card h2{color:#fff;max-width:720px;}
   .consultation-card p{margin-top:12px;max-width:640px;color:rgba(255,255,255,0.8);}
   .consultation-form{margin-top:24px;display:grid;gap:16px;}
-  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .field-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:16px;
+  }
+  @media (max-width: 600px) {
+    .field-grid{
+      grid-template-columns:1fr;
+    }
+  }
+  .full-width{
+    grid-column: 1 / -1;
+  }
   .consultation-form label{display:grid;gap:8px;font-size:14px;font-weight:600;}
   .consultation-form input,
   .consultation-form select,
@@ -660,11 +693,106 @@
     border-radius:14px;
     padding:13px 14px;
     font:inherit;
-    color:var(--ink);
+    /* Fond volontairement blanc dans les deux thèmes (contraste avec la carte bleu nuit) :
+       la couleur du texte doit donc rester fixe, pas suivre --ink qui devient clair en sombre. */
+    color:#12131C;
     background:#fff;
   }
-  .consultation-form textarea{min-height:120px;resize:vertical;}
-  .consultation-form .btn-primary{justify-self:flex-start;border:none;cursor:pointer;}
+  .consultation-form textarea{min-height:80px;resize:vertical;}
+  
+  /* Simulator Results */
+  .simulator-result {
+    display: none;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-left: 4px solid var(--brass);
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 8px;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease, max-height 0.4s ease;
+    max-height: 0;
+    overflow: hidden;
+  }
+  .simulator-result.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 3000px; /* doit dépasser la hauteur réelle : la liste cochable est bien plus haute */
+    overflow: visible;
+  }
+  .result-header h3 {
+    font-size: 17px;
+    color: var(--brass-light);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .result-meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    flex: 1;
+    min-width: 140px;
+    background: rgba(0, 0, 0, 0.22);
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .meta-label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 4px;
+  }
+  .meta-val {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brass-light);
+  }
+  .documents-section h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  .doc-list {
+    list-style: none !important;
+    padding-left: 0 !important;
+    display: grid;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .doc-list li {
+    font-size: 13.5px;
+    line-height: 1.4;
+    padding-left: 24px;
+    position: relative;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  .doc-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 2px;
+    top: 0;
+    color: var(--brass);
+    font-weight: bold;
+  }
+  .doc-disclaimer {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5) !important;
+    margin-top: 10px;
+  }
+  .consultation-form .btn-primary{justify-self:flex-start;border:none;cursor:pointer;margin-top:8px;}
 
   /* Final CTA */
   .final-cta{
@@ -741,31 +869,6 @@
   .about-point p{margin:0;font-size:14.5px;color:#3B3B36;}
   body[data-theme="dark"] .about-point p{color:#B4C3DD;}
 
-  /* Testimonials placeholder */
-  .testimonials .wrap{text-align:left;}
-  .testi-card{
-    margin-top:44px;
-    border:1px dashed var(--line);
-    border-radius:24px;
-    padding:44px 40px;
-    text-align:center;
-    background:rgba(255,255,255,0.6);
-    backdrop-filter:blur(8px);
-  }
-  body[data-theme="dark"] .testi-card{
-    background:rgba(255,255,255,0.05);
-    border-color:rgba(255,255,255,0.12);
-  }
-  .testi-card .stars{color:var(--brass);font-size:18px;letter-spacing:3px;margin-bottom:14px;}
-  .testi-card h3{font-size:19px;color:var(--navy);margin-bottom:8px;}
-  .testi-card p{font-size:14px;color:#6B6B62;max-width:420px;margin:0 auto;}
-  body[data-theme="dark"] .testi-card h3{
-    color:#F4F8FF;
-  }
-  body[data-theme="dark"] .testi-card p{
-    color:#B4C3DD;
-  }
-
   /* Info Grid and Cards */
   .info-grid{
     margin-top:40px;
@@ -840,6 +943,294 @@
     color:#B4C3DD;
   }
 
+  /* ============ Navigation ancrée ============ */
+  section[id], .hero[id]{scroll-margin-top:92px;}
+  .site-nav{
+    display:flex;align-items:center;gap:4px;
+    margin-left:auto;margin-right:8px;
+  }
+  .site-nav a{
+    position:relative;
+    padding:9px 13px;border-radius:999px;
+    font-size:14px;font-weight:500;color:var(--ink);
+    opacity:0.72;
+    transition:opacity .2s ease, background .2s ease, color .2s ease;
+    white-space:nowrap;
+  }
+  .site-nav a:hover{opacity:1;background:rgba(13,35,66,0.06);}
+  body[data-theme="dark"] .site-nav a:hover{background:rgba(255,255,255,0.08);}
+  .site-nav a.active{
+    opacity:1;color:var(--navy);font-weight:600;
+    background:rgba(197,155,99,0.14);
+  }
+  body[data-theme="dark"] .site-nav a.active{color:var(--brass-light);background:rgba(210,184,109,0.16);}
+  .nav-burger{
+    display:none;
+    width:42px;height:42px;border-radius:12px;
+    border:1px solid var(--line);background:transparent;
+    cursor:pointer;
+    flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  }
+  .nav-burger span{
+    display:block;width:18px;height:2px;border-radius:2px;
+    background:var(--ink);
+    transition:transform .25s ease, opacity .2s ease;
+  }
+  .nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  /* ============ Rassurance hero ============ */
+  .hero-reassure{
+    display:flex;flex-wrap:wrap;gap:8px 20px;
+    margin-top:22px;font-size:13.5px;color:#5B5C72;
+  }
+  body[data-theme="dark"] .hero-reassure{color:#9AA6BF;}
+  .hero-reassure span{display:inline-flex;align-items:center;gap:7px;}
+  .hero-reassure span::before{
+    content:'✓';color:var(--brass);font-weight:700;font-size:13px;
+  }
+
+  /* ============ Sous-titres de section ============ */
+  .section-hint{
+    margin-top:14px;max-width:660px;
+    font-size:14.5px;line-height:1.7;color:#5B5C72;
+  }
+  body[data-theme="dark"] .section-hint{color:#A8B9D1;}
+  .section-hint strong{color:var(--navy);}
+  body[data-theme="dark"] .section-hint strong{color:#E8EFFB;}
+
+  /* ============ Tampons cliquables ============ */
+  .stamp{cursor:pointer;}
+  .stamp:focus-visible{
+    outline:2px solid var(--brass);outline-offset:4px;
+  }
+  .stamp.is-selected{
+    border-color:var(--brass);
+    box-shadow:0 0 0 3px rgba(197,155,99,0.28);
+  }
+
+  /* ============ Tarifs ============ */
+  .price-note{
+    font-size:13px !important;color:var(--brass) !important;font-weight:600;
+    margin-top:-4px;
+  }
+  .pricing-foot{
+    margin-top:26px;padding:22px 24px;
+    border:1px solid var(--line);border-radius:20px;
+    background:var(--paper-warm);
+    display:grid;gap:12px;
+  }
+  body[data-theme="dark"] .pricing-foot{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.1);}
+  .pricing-foot p{font-size:14px;color:#5B5C72;line-height:1.7;margin:0;}
+  body[data-theme="dark"] .pricing-foot p{color:#A8B9D1;}
+  .pricing-foot strong{color:var(--navy);}
+  body[data-theme="dark"] .pricing-foot strong{color:#E8EFFB;}
+  .legal-note{
+    font-size:12.5px !important;
+    padding-top:12px;border-top:1px solid var(--line);
+    opacity:0.85;
+  }
+
+  /* ============ Progression du simulateur ============ */
+  .sim-progress{margin-top:22px;display:grid;gap:9px;max-width:520px;}
+  .sim-progress-bar{
+    height:6px;border-radius:999px;
+    background:rgba(255,255,255,0.15);
+    overflow:hidden;
+  }
+  .sim-progress-bar span{
+    display:block;height:100%;width:0%;
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--brass), var(--brass-light));
+    transition:width .45s cubic-bezier(.4,0,.2,1);
+  }
+  .sim-progress-text{
+    font-size:13px;color:rgba(255,255,255,0.72);
+  }
+  .sim-progress.complete .sim-progress-text{color:var(--brass-light);font-weight:600;}
+
+  /* ============ Champs facultatifs ============ */
+  .consultation-form .opt{
+    font-style:normal;font-weight:500;font-size:12px;
+    color:rgba(255,255,255,0.5);margin-left:6px;
+  }
+  .consultation-form select:invalid,
+  .consultation-form select option[value=""]{color:#8A8FA3;}
+  .consultation-form input:focus-visible,
+  .consultation-form select:focus-visible,
+  .consultation-form textarea:focus-visible{
+    outline:2px solid var(--brass);outline-offset:2px;
+  }
+  .contact-block{
+    display:grid;gap:16px;
+    padding-top:18px;margin-top:2px;
+    border-top:1px solid rgba(255,255,255,0.12);
+  }
+  .form-foot{
+    font-size:12.5px !important;
+    color:rgba(255,255,255,0.55) !important;
+    margin-top:10px !important;
+    max-width:560px;
+  }
+  .form-foot.error{color:#FFC7C7 !important;font-weight:600;}
+  .form-foot a{text-decoration:underline;color:var(--brass-light);}
+
+  /* ============ Résultat : note contextuelle ============ */
+  .result-note{
+    background:rgba(197,155,99,0.16);
+    border:1px solid rgba(229,208,172,0.35);
+    border-radius:12px;
+    padding:12px 14px;margin-bottom:16px;
+    font-size:13.5px;line-height:1.6;
+    color:#F2E4CC;
+  }
+
+  /* ============ Résultat : liste de documents ============ */
+  .doc-head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:12px;margin-bottom:12px;flex-wrap:wrap;
+  }
+  .doc-head h4{margin-bottom:0;}
+  .doc-progress{
+    font-size:12px;color:var(--brass-light);
+    padding:4px 10px;border-radius:999px;
+    background:rgba(0,0,0,0.25);
+    border:1px solid rgba(255,255,255,0.1);
+  }
+  .doc-list li{
+    padding-left:0;
+  }
+  .doc-list li::before{content:none;}
+  /* Ces règles doivent battre `.consultation-form label` et `.consultation-form input`,
+     d'où le préfixe : à spécificité égale, seul l'ordre déciderait. */
+  .consultation-form .doc-check{
+    display:flex;align-items:flex-start;gap:10px;
+    cursor:pointer;
+    padding:9px 12px;border-radius:10px;
+    background:rgba(0,0,0,0.16);
+    border:1px solid rgba(255,255,255,0.07);
+    font-size:13.5px;font-weight:500;
+    transition:background .2s ease, border-color .2s ease, opacity .2s ease;
+  }
+  .consultation-form .doc-check:hover{background:rgba(0,0,0,0.26);border-color:rgba(229,208,172,0.3);}
+  .consultation-form .doc-check input{
+    appearance:none;-webkit-appearance:none;
+    flex:0 0 auto;width:18px;height:18px;margin-top:1px;padding:0;
+    border:1.5px solid rgba(229,208,172,0.6);border-radius:5px;
+    background:transparent;cursor:pointer;
+    display:grid;place-content:center;
+    transition:background .2s ease, border-color .2s ease;
+  }
+  .consultation-form .doc-check input::after{
+    content:'✓';font-size:12px;font-weight:700;color:var(--navy-deep);
+    transform:scale(0);transition:transform .18s ease;
+  }
+  .consultation-form .doc-check input:checked{background:var(--brass-light);border-color:var(--brass-light);}
+  .consultation-form .doc-check input:checked::after{transform:scale(1);}
+  .consultation-form .doc-check input:focus-visible{outline:2px solid var(--brass);outline-offset:2px;}
+  .consultation-form .doc-check span{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,0.9);font-weight:400;}
+  .consultation-form .doc-check.done{opacity:0.5;}
+  .consultation-form .doc-check.done span{text-decoration:line-through;}
+
+  .doc-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;}
+  .btn-mini{
+    font:inherit;font-size:13px;font-weight:600;
+    padding:9px 15px;border-radius:999px;
+    border:1px solid rgba(229,208,172,0.4);
+    background:rgba(255,255,255,0.06);
+    color:var(--brass-light);
+    cursor:pointer;
+    transition:background .2s ease, border-color .2s ease, transform .15s ease;
+  }
+  .btn-mini:hover{background:rgba(255,255,255,0.14);border-color:var(--brass-light);transform:translateY(-1px);}
+  .btn-mini.done{background:rgba(34,197,94,0.22);border-color:rgba(34,197,94,0.5);color:#BBF7D0;}
+
+  /* ============ Impression ============ */
+  /* Le bouton « Imprimer » ne doit sortir que la fiche de documents,
+     pas les onze sections de la page. */
+  @media print{
+    body > section:not(.consultation),
+    header, footer, .whatsapp-float, .video-modal,
+    .doc-actions, .contact-block, .form-foot,
+    .btn-primary, .btn-ghost{display:none !important;}
+    .consultation{padding:0 !important;}
+    .consultation .wrap{max-width:none;padding:0;}
+    .consultation-card::before{
+      content:'DocVisa Tunisie — +216 53 117 158 — Ariana, Tunisie';
+      display:block;font-size:11pt;font-weight:700;
+      margin-bottom:10pt;padding-bottom:6pt;
+      border-bottom:1px solid #999;color:#000;
+    }
+    body{background:#fff !important;color:#000 !important;}
+    .consultation-card{
+      background:#fff !important;color:#000 !important;
+      box-shadow:none !important;border:1px solid #ccc;
+      opacity:1 !important;transform:none !important;
+    }
+    .consultation-card h2, .consultation-card p, .section-label,
+    .consultation-form label, .consultation-form label > span{color:#000 !important;}
+    .sim-progress{display:none !important;}
+    .consultation-form select{
+      border:1px solid #999 !important;background:#fff !important;color:#000 !important;
+      appearance:none;-webkit-appearance:none;padding:6px 8px !important;
+    }
+    .field-grid{gap:8px !important;page-break-inside:avoid;}
+    .simulator-result{
+      display:block !important;opacity:1 !important;max-height:none !important;
+      background:#fff !important;color:#000 !important;
+      border:1px solid #999 !important;
+      transform:none !important;page-break-inside:avoid;
+    }
+    .result-header h3, .meta-val, .meta-label, .documents-section h4,
+    .doc-check span, .doc-disclaimer, .doc-progress{color:#000 !important;}
+    .meta-item{background:#f4f4f4 !important;border:1px solid #ccc !important;}
+    .doc-check{background:#fff !important;border:1px solid #999 !important;}
+    .doc-check input{border-color:#000 !important;}
+    .doc-check.done{opacity:1 !important;}
+  }
+
+  @media (max-width:1080px){
+    .site-nav a{padding:9px 10px;font-size:13.5px;}
+  }
+
+  @media (max-width:1024px){
+    .site-nav{
+      position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:2px;
+      margin:0;padding:12px 24px 18px;
+      background:var(--paper);
+      border-bottom:1px solid var(--line);
+      box-shadow:0 20px 40px -24px rgba(13,35,66,0.4);
+      display:none;
+    }
+    body[data-theme="dark"] .site-nav{background:#08182B;}
+    .site-nav.open{display:flex;}
+    .site-nav a{padding:13px 14px;border-radius:12px;font-size:15px;}
+    .nav-burger{display:flex;}
+    .theme-toggle .theme-toggle-label{display:none;}
+    .theme-toggle{padding:10px 12px;}
+    header{position:sticky;}
+    header .wrap{position:relative;}
+  }
+
+  @media (max-width:900px){
+    .hero-reassure{justify-content:center;}
+  }
+
+  @media (max-width:820px){
+    .reason-grid{grid-template-columns:repeat(2,1fr);}
+    .pricing-grid{grid-template-columns:1fr;}
+  }
+
+  @media (max-width:560px){
+    .reason-grid{grid-template-columns:1fr;}
+    .nav-cta{display:none;}
+    .result-meta{gap:10px;}
+    .meta-item{min-width:100%;}
+    .doc-actions .btn-mini{flex:1 1 auto;text-align:center;}
+  }
+
   @media (max-width:900px){
     .hero .wrap{grid-template-columns:1fr;gap:56px;}
     .hero-copy{order:1;text-align:center;}
@@ -862,7 +1253,7 @@
     .hero{padding:52px 0 56px;}
     .final-cta{padding:70px 0 80px;}
     footer .wrap{flex-direction:column;gap:6px;}
-    .testi-card{padding:32px 24px;}
+    .reason-card{padding:24px 22px;}
     .avatar-frame{width:220px;height:220px;}
     .avatar-frame svg{width:150px;}
     .hero-blob{width:300px;height:300px;}
