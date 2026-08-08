@@ -272,9 +272,9 @@
     color:var(--ink);
   }
   .float-badge .fdot{width:8px;height:8px;border-radius:50%;}
-  .badge-1{top:6%;left:-4%;animation-delay:0s;}
+  .badge-1{top: -4%; left: -14%; animation-delay: 0s; }
   .badge-2{bottom:12%;right:-6%;animation-delay:1.2s;}
-  .badge-3{bottom:-2%;left:10%;animation-delay:2.4s;}
+  .badge-3{bottom:-9%;left:10%;animation-delay:2.4s;}
   @keyframes floaty{
     0%,100%{transform:translateY(0);}
     50%{transform:translateY(-10px);}
@@ -396,11 +396,12 @@
     gap:18px;
   }
   .service-card{
-    background:rgba(255,255,255,0.85);
+    background:rgba(255,255,255,0.98);
     backdrop-filter:blur(10px);
     border-radius:24px;
     padding:30px 28px;
-    border:2px solid rgba(13,35,66,0.14);
+    border:1px solid rgba(13,35,66,0.12);
+    box-shadow:0 18px 35px -22px rgba(13,35,66,0.18);
     text-align:center;
     opacity:0;
     transform:translateY(18px);
