@@ -60,6 +60,14 @@
   }
   .theme-toggle:hover{transform:translateY(-1px);border-color:var(--brass);}
   body[data-theme="dark"] .theme-toggle{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:var(--paper);}
+  .lang-toggle{
+    display:inline-flex;align-items:center;gap:6px;padding:10px 15px;border-radius:999px;
+    border:1px solid var(--line);background:rgba(255,255,255,0.8);color:var(--ink);
+    cursor:pointer;font-size:14px;font-weight:700;font-family:'Cairo','Inter',sans-serif;
+    transition:background .3s ease, border-color .3s ease, transform .2s ease;
+  }
+  .lang-toggle:hover{transform:translateY(-1px);border-color:var(--brass);}
+  body[data-theme="dark"] .lang-toggle{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:var(--paper);}
   .brand-mark{
     width:36px;height:36px;border-radius:11px;
     background:linear-gradient(135deg, var(--navy), var(--navy-deep));
@@ -1283,4 +1291,73 @@
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{transition:none !important;animation:none !important;}
+  }
+
+  /* ============================================================
+     Arabe : police + mise en page droite-à-gauche
+     Flexbox et Grid inversent déjà columns/rows tout seuls avec
+     dir="rtl" ; il ne reste à corriger que le positionnement
+     absolu/fixe (left/right explicites) et les propriétés
+     physiques (padding-left, border-left…) qui n'ont pas
+     d'équivalent "logique" dans le CSS existant.
+     ============================================================ */
+  html[lang="ar"] body{
+    font-family:'Cairo','Inter',sans-serif;
+  }
+  html[lang="ar"] h1,
+  html[lang="ar"] h2,
+  html[lang="ar"] h3,
+  html[lang="ar"] .btn-primary,
+  html[lang="ar"] .btn-ghost,
+  html[lang="ar"] .nav-cta,
+  html[lang="ar"] .lang-toggle,
+  html[lang="ar"] .theme-toggle,
+  html[lang="ar"] .site-nav a{
+    font-family:'Cairo','Poppins',sans-serif;
+  }
+  /* L'arabe n'a pas de majuscules/minuscules : lettrage et translation cassent la lecture */
+  html[lang="ar"] .mono{
+    font-family:'Cairo','IBM Plex Mono',monospace;
+    letter-spacing:0;
+    text-transform:none;
+  }
+  html[lang="ar"] .brand-mark,
+  html[lang="ar"] .about-badge{
+    font-family:'Fraunces',serif; /* initiales "DV" : identité de marque, non traduite */
+  }
+
+  html[dir="rtl"] .eyebrow::before{margin-left:0;}
+
+  /* Badges flottants du hero : positions en miroir */
+  html[dir="rtl"] .badge-1{left:auto;right:-14%;}
+  html[dir="rtl"] .badge-2{right:auto;left:-6%;}
+  html[dir="rtl"] .badge-3{left:auto;right:10%;}
+
+  /* Triangle de lecture de la vidéo : pointe vers la gauche en RTL */
+  html[dir="rtl"] .play-chip .tri{
+    border-left:none;
+    border-right:8px solid #fff;
+  }
+
+  /* Bouton de fermeture de la modale vidéo */
+  html[dir="rtl"] .video-modal-close{right:auto;left:0;}
+
+  /* Bulle WhatsApp flottante */
+  html[dir="rtl"] .whatsapp-float{right:auto;left:22px;}
+
+  /* Puces natives des offres tarifaires */
+  html[dir="rtl"] .pricing-card ul{padding-left:0;padding-right:18px;}
+
+  /* Liseré de couleur du bloc résultat du simulateur */
+  html[dir="rtl"] .simulator-result{border-left:none;border-right:4px solid var(--brass);}
+
+  /* Espacement du menu principal par rapport aux actions d'en-tête */
+  html[dir="rtl"] .site-nav{margin-left:8px;margin-right:auto;}
+
+  /* Petites flèches décoratives "→" (engagements, à propos) : on les retourne visuellement */
+  html[dir="rtl"] .mark{display:inline-block;transform:scaleX(-1);}
+
+  /* Sous 1024px, le menu redevient un tiroir plein écran (left:0;right:0) : rien à inverser */
+  @media (max-width:1024px){
+    html[dir="rtl"] .site-nav{margin:0;}
   }
