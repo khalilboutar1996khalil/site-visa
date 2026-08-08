@@ -14,37 +14,39 @@
   }
 
   // Theme toggle
-  var themeToggle = document.getElementById('themeToggle');
-  var savedTheme = localStorage.getItem('docvisa-theme');
-  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  var initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+  document.addEventListener('DOMContentLoaded', function() {
+    var themeToggle = document.getElementById('themeToggle');
+    var savedTheme = localStorage.getItem('docvisa-theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
 
-  function applyTheme(theme) {
-    document.body.setAttribute('data-theme', theme);
-    if (themeToggle) {
-      themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
-      var icon = themeToggle.querySelector('.theme-toggle-icon');
-      var label = themeToggle.querySelector('.theme-toggle-label');
-      if (icon) icon.textContent = theme === 'dark' ? '☀️' : '🌙';
-      if (label) label.textContent = theme === 'dark' ? 'Mode clair' : 'Mode sombre';
-      if (theme === 'dark') {
-        themeToggle.setAttribute('aria-label', 'Basculer vers le thème clair');
-      } else {
-        themeToggle.setAttribute('aria-label', 'Basculer vers le thème sombre');
+    function applyTheme(theme) {
+      document.body.setAttribute('data-theme', theme);
+      if (themeToggle) {
+        themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
+        var icon = themeToggle.querySelector('.theme-toggle-icon');
+        var label = themeToggle.querySelector('.theme-toggle-label');
+        if (icon) icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        if (label) label.textContent = theme === 'dark' ? 'Mode clair' : 'Mode sombre';
+        if (theme === 'dark') {
+          themeToggle.setAttribute('aria-label', 'Basculer vers le thème clair');
+        } else {
+          themeToggle.setAttribute('aria-label', 'Basculer vers le thème sombre');
+        }
       }
     }
-  }
 
-  applyTheme(initialTheme);
+    applyTheme(initialTheme);
 
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function() {
-      var currentTheme = document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-      var nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      applyTheme(nextTheme);
-      localStorage.setItem('docvisa-theme', nextTheme);
-    });
-  }
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function() {
+        var currentTheme = document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        var nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(nextTheme);
+        localStorage.setItem('docvisa-theme', nextTheme);
+      });
+    }
+  });
 
   // Video popup modal
   var modal = document.getElementById('videoModal');
