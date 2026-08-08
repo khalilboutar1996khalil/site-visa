@@ -4,7 +4,7 @@
   (function(){
     var loader = document.getElementById('pageLoader');
     if (!loader) return;
-    var MIN_DISPLAY_MS = 600;
+    var MIN_DISPLAY_MS = 2000;
     setTimeout(function(){
       loader.classList.add('hide');
       setTimeout(function(){ loader.remove(); }, 550); // laisse la transition CSS se terminer
