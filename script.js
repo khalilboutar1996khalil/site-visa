@@ -1,3 +1,16 @@
+  // Écran de chargement : affiché un court instant fixe pour l'effet de marque,
+  // indépendamment du chargement de la vidéo de présentation (2 Mo, chargée en
+  // tâche de fond) qui ne doit pas retarder l'ouverture du site.
+  (function(){
+    var loader = document.getElementById('pageLoader');
+    if (!loader) return;
+    var MIN_DISPLAY_MS = 600;
+    setTimeout(function(){
+      loader.classList.add('hide');
+      setTimeout(function(){ loader.remove(); }, 550); // laisse la transition CSS se terminer
+    }, MIN_DISPLAY_MS);
+  })();
+
   var WHATSAPP_NUMBER = '21653117158';
 
   var animatedSections = [
