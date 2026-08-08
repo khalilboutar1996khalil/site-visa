@@ -82,3 +82,23 @@
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape') closeModal();
   });
+
+  // Consultation form -> WhatsApp
+  var consultationForm = document.getElementById('consultationForm');
+  if (consultationForm) {
+    consultationForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var nameInput = consultationForm.querySelector('input[name="name"]');
+      var destinationInput = consultationForm.querySelector('select[name="destination"]');
+      var messageInput = consultationForm.querySelector('textarea[name="message"]');
+      var name = nameInput ? nameInput.value.trim() : '';
+      var destination = destinationInput ? destinationInput.value : '';
+      var message = messageInput ? messageInput.value.trim() : '';
+      var text = 'Bonjour DocVisa Tunisie, je souhaite un accompagnement pour ' + (destination || 'un visa') + '. Nom : ' + (name || 'non renseigné') + '.';
+      if (message) {
+        text += ' Détail : ' + message;
+      }
+      var url = 'https://wa.me/21653117158?text=' + encodeURIComponent(text);
+      window.open(url, '_blank', 'noopener');
+    });
+  }
