@@ -307,28 +307,39 @@
     background:linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
     box-shadow:0 24px 48px -20px rgba(0,0,0,0.55);
   }
-  body[data-theme="dark"] .play-chip{
-    background:rgba(255,255,255,0.08);
-    color:#F5F8FF;
-  }
   body[data-theme="dark"] .float-badge{
     background:rgba(255,255,255,0.06);
     box-shadow:0 14px 30px -14px rgba(0,0,0,0.45);
   }
   .avatar-btn:hover .avatar-frame{transform:scale(1.03);}
   .avatar-frame svg{width:190px;height:auto;}
-  .play-chip{
-    display:flex;align-items:center;gap:9px;
-    background:var(--ink);color:#fff;
-    padding:11px 20px;border-radius:999px;
-    font-size:13.5px;font-weight:600;
+
+  /* Icône de lecture centrée sur l'illustration, sans texte ni chevauchement avec les badges flottants */
+  .play-badge{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:60px;height:60px;border-radius:50%;
+    background:rgba(12,15,25,0.55);
+    backdrop-filter:blur(2px);
+    border:2px solid rgba(255,255,255,0.75);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 28px -10px rgba(0,0,0,0.45);
+    transition:transform .2s ease, background .2s ease;
   }
-  .play-chip .tri{
-    width:0;height:0;
-    border-top:5px solid transparent;
-    border-bottom:5px solid transparent;
-    border-left:8px solid #fff;
+  body[data-theme="dark"] .play-badge{
+    background:rgba(5,10,20,0.6);
   }
+  .avatar-btn:hover .play-badge{
+    transform:translate(-50%,-50%) scale(1.08);
+    background:rgba(12,15,25,0.72);
+  }
+  .play-badge .tri{
+    width:0;height:0;margin-left:4px;
+    border-top:9px solid transparent;
+    border-bottom:9px solid transparent;
+    border-left:14px solid #fff;
+  }
+  html[dir="rtl"] .play-badge .tri{margin-left:0;margin-right:4px;}
   .float-badge{
     position:absolute;
     background:#fff;
@@ -364,6 +375,7 @@
   .video-modal{
     position:fixed;inset:0;z-index:100;
     background:rgba(15,16,35,0.72);
+    backdrop-filter:blur(3px);
     display:none;
     align-items:center;justify-content:center;
     padding:24px;
@@ -372,12 +384,20 @@
   .video-modal-inner{
     position:relative;
     width:100%;max-width:380px;
+    transform:scale(0.94) translateY(8px);
+    opacity:0;
+    transition:transform .32s cubic-bezier(.2,.9,.3,1.2), opacity .28s ease;
+  }
+  .video-modal.open .video-modal-inner{
+    transform:scale(1) translateY(0);
+    opacity:1;
   }
   .video-modal video{
     width:100%;aspect-ratio:9/16;
     border-radius:16px;
     display:block;
     background:#000;
+    object-fit:cover;
     box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
   }
   .video-modal-close{
@@ -388,6 +408,55 @@
     font-size:18px;line-height:1;
   }
   .video-modal-close:hover{background:rgba(255,255,255,0.28);}
+
+  /* Anneau de chargement affiché pendant la mise en mémoire tampon (preload="metadata" :
+     rien n'est téléchargé tant que la vidéo n'est pas ouverte) */
+  .video-modal-spinner{
+    position:absolute;top:50%;left:50%;
+    width:44px;height:44px;
+    margin:-22px 0 0 -22px;
+    border-radius:50%;
+    border:3px solid rgba(255,255,255,0.2);
+    border-top-color:var(--brass-light);
+    animation:loader-spin 0.85s linear infinite;
+    display:none;
+    pointer-events:none;
+  }
+  .video-modal-spinner.show{display:block;}
+
+  .video-modal-error{
+    position:absolute;inset:16px;
+    display:none;
+    flex-direction:column;align-items:center;justify-content:center;gap:16px;
+    text-align:center;padding:24px;
+    background:rgba(5,16,32,0.92);
+    border-radius:12px;
+  }
+  .video-modal-error.show{display:flex;}
+  .video-modal-error p{color:#F1EAE0;font-size:14px;line-height:1.6;}
+  .video-modal-error .btn-primary{padding:12px 22px;font-size:14px;}
+
+  /* ============ Bandeau vidéo (contenu dans les mêmes marges que le reste du site) ============ */
+  .dest-slider{
+    padding:28px 0 0;
+  }
+  .dest-slider-frame{
+    position:relative;
+    height:clamp(280px, 40vw, 440px);
+    border-radius:28px;
+    overflow:hidden;
+    background:var(--navy-deep);
+    box-shadow:0 24px 50px -28px rgba(13,35,66,0.4);
+  }
+  .dest-video-banner{
+    display:block;width:100%;
+  }
+  .dest-video-banner-el{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+    display:block;
+  }
 
   /* Stamps strip */
   .destinations{

@@ -63,6 +63,16 @@
   </div>
 </header>
 
+<section class="dest-slider" id="destSlider">
+  <div class="wrap">
+    <div class="dest-slider-frame dest-video-banner" id="destVideoBanner">
+      <video class="dest-video-banner-el" autoplay muted loop playsinline preload="auto">
+        <source src="docvisa-video-presentation.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
 <section class="hero" id="top">
   <div class="wrap">
     <div class="hero-copy">
@@ -106,8 +116,8 @@
             <circle cx="147" cy="78" r="3.6" fill="#16172B"/>
             <path d="M113 94 Q130 106 149 94" fill="none" stroke="#16172B" stroke-width="3.5" stroke-linecap="round"/>
           </svg>
+          <span class="play-badge" aria-hidden="true"><span class="tri"></span></span>
         </div>
-        <div class="play-chip"><span class="tri"></span><span data-i18n="hero.videoChip">Voir la vidéo de présentation</span></div>
       </button>
     </div>
   </div>
@@ -116,10 +126,15 @@
 <div class="video-modal" id="videoModal">
   <div class="video-modal-inner">
     <button class="video-modal-close" id="closeVideoModal" aria-label="Fermer" data-i18n-aria-label="video.close">✕</button>
-    <video id="modalVideo" controls playsinline preload="auto">
+    <video id="modalVideo" controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 640'%3E%3Crect width='360' height='640' fill='%230D2342'/%3E%3Crect width='360' height='300' y='340' fill='%23051020'/%3E%3Ccircle cx='180' cy='300' r='56' fill='none' stroke='%23C59B63' stroke-width='2.5'/%3E%3Cpath d='M164 270 L164 330 L212 300 Z' fill='%23E5D0AC'/%3E%3Ctext x='180' y='410' font-family='Poppins,Arial,sans-serif' font-size='22' font-weight='700' fill='%23F5F1E7' text-anchor='middle'%3EDocVisa Tunisie%3C/text%3E%3C/svg%3E">
       <source src="docvisa-video-bienvenue.mp4" type="video/mp4">
       <span data-i18n="video.unsupported">Votre navigateur ne supporte pas la lecture vidéo.</span>
     </video>
+    <div class="video-modal-spinner" id="videoSpinner" aria-hidden="true"></div>
+    <div class="video-modal-error" id="videoError" hidden>
+      <p data-i18n="video.error">La vidéo n'a pas pu être chargée. Vérifiez votre connexion ou contactez-nous directement.</p>
+      <a class="btn-primary" href="https://wa.me/21653117158" target="_blank" rel="noopener" data-i18n="header.whatsapp">WhatsApp</a>
+    </div>
   </div>
 </div>
 

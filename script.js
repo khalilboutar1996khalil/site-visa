@@ -69,8 +69,8 @@
     'hero.badge1': 'فرنسا · إيطاليا · إسبانيا · مالطا · كندا',
     'hero.badge2': '100% من الملفات مُدقّقة',
     'hero.badge3': 'الرد خلال ساعة · من 8 إلى 20',
-    'hero.videoChip': 'شاهد فيديو التعريف',
     'video.unsupported': 'متصفحكم لا يدعم تشغيل الفيديو.',
+    'video.error': 'تعذّر تحميل الفيديو. تحققوا من اتصالكم بالإنترنت أو راسلونا مباشرة.',
     'destinations.label': 'الوجهات المتاحة',
     'destinations.title': 'خمس دول، جميع فئات التأشيرات',
     'destinations.hint': '👆 اضغطوا على دولة لبدء المحاكاة بهذه الوجهة.',
@@ -274,6 +274,9 @@
     Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-aria-label]'), function(el){
       I18N_FR_ATTR[el.getAttribute('data-i18n-aria-label')] = el.getAttribute('aria-label') || '';
     });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-alt]'), function(el){
+      I18N_FR_ATTR[el.getAttribute('data-i18n-alt')] = el.getAttribute('alt') || '';
+    });
   }
 
   function translateDom() {
@@ -286,6 +289,9 @@
     });
     Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-aria-label]'), function(el){
       el.setAttribute('aria-label', tAttr(el.getAttribute('data-i18n-aria-label')));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-alt]'), function(el){
+      el.setAttribute('alt', tAttr(el.getAttribute('data-i18n-alt')));
     });
   }
 
@@ -413,12 +419,32 @@
   var modalVideo = document.getElementById('modalVideo');
   var openBtn = document.getElementById('openVideoModal');
   var closeBtn = document.getElementById('closeVideoModal');
+  var videoSpinner = document.getElementById('videoSpinner');
+  var videoError = document.getElementById('videoError');
   var lastFocusedBeforeModal = null;
+
+  // La vidéo n'est plus préchargée (preload="metadata") pour ne pas faire télécharger
+  // 2 Mo à chaque visiteur qui ne clique jamais dessus : l'anneau comble donc le temps
+  // de mise en mémoire tampon au premier clic, et réapparaît si le débit faiblit en cours de lecture.
+  if (modalVideo) {
+    modalVideo.addEventListener('playing', function(){
+      if (videoSpinner) videoSpinner.classList.remove('show');
+    });
+    modalVideo.addEventListener('waiting', function(){
+      if (videoSpinner) videoSpinner.classList.add('show');
+    });
+    modalVideo.addEventListener('error', function(){
+      if (videoSpinner) videoSpinner.classList.remove('show');
+      if (videoError) videoError.classList.add('show');
+    });
+  }
 
   function openModal(){
     if (!modal || !modalVideo) return;
     lastFocusedBeforeModal = document.activeElement;
     modal.classList.add('open');
+    if (videoError) videoError.classList.remove('show');
+    if (videoSpinner) videoSpinner.classList.add('show');
     modalVideo.muted = false;
     modalVideo.volume = 1;
     try { modalVideo.currentTime = 0; } catch(e){}
@@ -427,7 +453,9 @@
       p.catch(function(){
         // Browser blocked unmuted autoplay: retry muted, then let the person unmute via controls
         modalVideo.muted = true;
-        modalVideo.play().catch(function(){});
+        modalVideo.play().catch(function(){
+          if (videoSpinner) videoSpinner.classList.remove('show');
+        });
       });
     }
     document.body.style.overflow = 'hidden';
@@ -438,6 +466,7 @@
     if (!modal.classList.contains('open')) return;
     modal.classList.remove('open');
     modalVideo.pause();
+    if (videoSpinner) videoSpinner.classList.remove('show');
     document.body.style.overflow = '';
     // On rend le clavier au bouton qui a ouvert la vidéo
     if (lastFocusedBeforeModal && lastFocusedBeforeModal.focus) lastFocusedBeforeModal.focus();
@@ -912,6 +941,24 @@
     });
   }
 
+  // Envoie une destination choisie ailleurs sur la page (tampon, slider photo…) vers le simulateur.
+  // Partagé par les tampons pays et le bandeau photo, pour éviter de dupliquer ce parcours.
+  function goToSimulatorWithCountry(country) {
+    if (!country || !simDestination) return;
+    simDestination.value = country;
+    stamps.forEach(function(s){ s.classList.toggle('is-selected', s.getAttribute('data-country') === country); });
+    updateSimulator();
+    var consultationSection = document.getElementById('consultation');
+    if (consultationSection) {
+      consultationSection.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(function() {
+        // On place le curseur sur la question suivante, pas sur celle déjà remplie
+        var next = (simVisaType && !simVisaType.value) ? simVisaType : simDestination;
+        next.focus();
+      }, 800);
+    }
+  }
+
   // Connect stamps to simulator
   var stamps = document.querySelectorAll('.stamps .stamp');
   var STAMP_ARIA_LABELS = {
@@ -935,21 +982,7 @@
     stamp.setAttribute('tabindex', '0');
     var country = stamp.getAttribute('data-country') || '';
 
-    function selectCountry() {
-      if (!country || !simDestination) return;
-      simDestination.value = country;
-      stamps.forEach(function(s){ s.classList.toggle('is-selected', s === stamp); });
-      updateSimulator();
-      var consultationSection = document.getElementById('consultation');
-      if (consultationSection) {
-        consultationSection.scrollIntoView({ behavior: 'smooth' });
-        setTimeout(function() {
-          // On place le curseur sur la question suivante, pas sur celle déjà remplie
-          var next = (simVisaType && !simVisaType.value) ? simVisaType : simDestination;
-          next.focus();
-        }, 800);
-      }
-    }
+    function selectCountry() { goToSimulatorWithCountry(country); }
 
     stamp.addEventListener('click', selectCountry);
     stamp.addEventListener('keydown', function(e){
@@ -959,6 +992,17 @@
       }
     });
   });
+
+  // ---- Bandeau vidéo (remplace l'ancien slider photo) ----
+  var destVideoEl = document.querySelector('.dest-video-banner-el');
+  if (destVideoEl) {
+    // Coupe la lecture en arrière-plan quand l'onglet n'est pas visible, pour ne pas
+    // gâcher la batterie/bande passante d'un visiteur qui a changé d'onglet.
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden) destVideoEl.pause();
+      else destVideoEl.play().catch(function(){});
+    });
+  }
 
   if (consultationForm) {
     consultationForm.addEventListener('submit', function(e){
