@@ -4,10 +4,6 @@ Site vitrine one-page pour **DocVisa Tunisie**, un service d'accompagnement à l
 
 Le site présente les services, le tarif, le déroulé de l'accompagnement, une FAQ, et surtout un **simulateur de dossier** : le visiteur choisit sa destination, son type de visa et son profil, puis le site génère un résumé qu'il peut envoyer directement sur WhatsApp — sans aucun formulaire côté serveur.
 
-## Aperçu
-
-![Aperçu de la page d'accueil](assets/screenshot-home.png)
-
 ## Fonctionnalités
 
 - **Simulateur de dossier** : sélection destination / type de visa / profil professionnel → résumé pré-rempli ouvert dans WhatsApp (`wa.me`).
@@ -18,9 +14,3 @@ Le site présente les services, le tarif, le déroulé de l'accompagnement, une 
 - **Cartes "tampons de visa"** par pays avec drapeaux dessinés en SVG.
 - Site 100% statique, sans dépendance de build ni backend.
 
-## Ce que vous pouvez attendre de nous, sans exception
-
-- **Relecture avant dépôt** : chaque dossier est relu une seconde fois avant d'être remis, pour repérer toute pièce manquante ou incohérence.
-- **Confidentialité totale** : vos documents personnels ne sont partagés avec personne et sont supprimés une fois le dossier déposé.
-- **Transparence sur les prix** : aucun frais caché, le tarif du service est communiqué avant de commencer, séparément des frais de consulat.
-- **Un seul interlocuteur** : du premier message WhatsApp jusqu'au dossier finalisé, vous parlez toujours à la même personne.
