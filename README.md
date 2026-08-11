@@ -17,3 +17,10 @@ Le site présente les services, le tarif, le déroulé de l'accompagnement, une 
 - **Bannière vidéo** de présentation en en-tête + modale vidéo dans le hero.
 - **Cartes "tampons de visa"** par pays avec drapeaux dessinés en SVG.
 - Site 100% statique, sans dépendance de build ni backend.
+
+## Ce que vous pouvez attendre de nous, sans exception
+
+- **Relecture avant dépôt** : chaque dossier est relu une seconde fois avant d'être remis, pour repérer toute pièce manquante ou incohérence.
+- **Confidentialité totale** : vos documents personnels ne sont partagés avec personne et sont supprimés une fois le dossier déposé.
+- **Transparence sur les prix** : aucun frais caché, le tarif du service est communiqué avant de commencer, séparément des frais de consulat.
+- **Un seul interlocuteur** : du premier message WhatsApp jusqu'au dossier finalisé, vous parlez toujours à la même personne.
