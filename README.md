@@ -1,5 +1,7 @@
 # DocVisa Tunisie
 
+![Aperçu de la page d'accueil](assets/screenshot-home.png)
+
 Site vitrine one-page pour **DocVisa Tunisie**, un service d'accompagnement à la préparation de dossiers de visa (France, Italie, Espagne, Malte, Canada) pour des demandeurs basés en Tunisie.
 
 Le site présente les services, le tarif, le déroulé de l'accompagnement, une FAQ, et surtout un **simulateur de dossier** : le visiteur choisit sa destination, son type de visa et son profil, puis le site génère un résumé qu'il peut envoyer directement sur WhatsApp — sans aucun formulaire côté serveur.
