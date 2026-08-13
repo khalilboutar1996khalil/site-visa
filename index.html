@@ -417,6 +417,16 @@
               </div>
             </div>
 
+            <!-- Weather Preview Link -->
+            <a href="#weather" class="weather-preview-card" id="weatherPreviewLink" style="display:none;">
+              <span class="wp-icon" id="weatherPreviewIcon">🌤️</span>
+              <div class="wp-text">
+                <span class="wp-title" id="weatherPreviewTitle" data-i18n="weather.preview_title">Météo de votre destination</span>
+                <span class="wp-temp" id="weatherPreviewTemp">--°C · Ensoleillé</span>
+              </div>
+              <span class="wp-arrow">→</span>
+            </a>
+
             <div class="result-note" id="resultNote" hidden></div>
 
             <div class="documents-section">
@@ -507,6 +517,88 @@
         <summary data-i18n="faq11.q">Êtes-vous un organisme officiel ou agréé par les consulats ?</summary>
         <div class="faq-a" data-i18n="faq11.a">Non. DocVisa Tunisie est un service privé d'assistance documentaire, indépendant des consulats et des ambassades. Nous n'avons aucun contact privilégié ni influence sur les décisions, et nous vous conseillons de vous méfier de toute personne qui vous promettrait le contraire. Notre valeur est ailleurs : un dossier complet, cohérent et conforme.</div>
       </details>
+    </div>
+  </div>
+</section>
+
+<section class="weather-section alt-bg" id="weather">
+  <div class="wrap">
+    <div class="section-label mono" data-i18n="weather.label">Climat & Météo</div>
+    <h2 data-i18n="weather.title">Météo dans le pays de destination</h2>
+    <p class="section-hint" data-i18n="weather.hint">Consultez la météo en direct et les prévisions sur 5 jours pour mieux planifier votre voyage.</p>
+    
+    <div class="weather-container">
+      <div class="weather-tabs" role="tablist">
+        <button class="weather-tab active" data-country="France" role="tab" aria-selected="true" aria-controls="weather-panel">
+          <span class="tab-flag">🇫🇷</span> <span data-i18n="stamp.france">France</span>
+        </button>
+        <button class="weather-tab" data-country="Italie" role="tab" aria-selected="false" aria-controls="weather-panel">
+          <span class="tab-flag">🇮🇹</span> <span data-i18n="stamp.italie">Italie</span>
+        </button>
+        <button class="weather-tab" data-country="Espagne" role="tab" aria-selected="false" aria-controls="weather-panel">
+          <span class="tab-flag">🇪🇸</span> <span data-i18n="stamp.espagne">Espagne</span>
+        </button>
+        <button class="weather-tab" data-country="Malte" role="tab" aria-selected="false" aria-controls="weather-panel">
+          <span class="tab-flag">🇲🇹</span> <span data-i18n="stamp.malte">Malte</span>
+        </button>
+        <button class="weather-tab" data-country="Canada" role="tab" aria-selected="false" aria-controls="weather-panel">
+          <span class="tab-flag">🇨🇦</span> <span data-i18n="stamp.canada">Canada</span>
+        </button>
+      </div>
+
+      <div class="weather-dashboard" id="weather-panel" role="tabpanel">
+        <div class="weather-loading-overlay" id="weatherLoading">
+          <div class="weather-spinner"></div>
+          <span data-i18n="weather.loading">Chargement de la météo en direct...</span>
+        </div>
+        <div class="weather-error-overlay" id="weatherError" style="display:none;">
+          <span class="weather-error-icon">⚠️</span>
+          <span data-i18n="weather.error">Impossible de charger la météo. Vérifiez votre connexion.</span>
+        </div>
+        
+        <div class="weather-content" id="weatherContent">
+          <div class="weather-today-card" id="weatherTodayCard">
+            <div class="weather-effects" id="weatherEffects"></div>
+            <div class="today-main">
+              <div class="today-header">
+                <span class="today-city" id="todayCity">Paris, France</span>
+                <span class="today-date" id="todayDate">Jeudi 13 Août</span>
+              </div>
+              <div class="today-temp-group">
+                <div class="today-icon-container" id="todayIconContainer">
+                  <!-- Dynamic CSS animated weather icon -->
+                </div>
+                <div class="today-temp-wrap">
+                  <span class="today-temp" id="todayTemp">24°C</span>
+                  <span class="today-desc" id="todayDesc">Ciel dégagé</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="today-details">
+              <div class="detail-item">
+                <span class="detail-label" data-i18n="weather.feels_like">Ressenti</span>
+                <span class="detail-val" id="todayFeelsLike">26°C</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label" data-i18n="weather.humidity">Humidité</span>
+                <span class="detail-val" id="todayHumidity">45%</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label" data-i18n="weather.wind">Vent</span>
+                <span class="detail-val" id="todayWind">12 km/h</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="weather-forecast-panel">
+            <h3 data-i18n="weather.forecast_5d">Prévisions pour les 5 prochains jours</h3>
+            <div class="forecast-list" id="forecastList">
+              <!-- Dynamically populated rows -->
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
