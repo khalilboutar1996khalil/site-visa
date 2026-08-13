@@ -60,19 +60,19 @@ var AR_DICT = {
   'header.whatsapp': 'واتساب',
   'hero.eyebrow': 'مساعدة في ملفات التأشيرة — تونس',
   'hero.headline': 'ملف تأشيرة <em>مُعدّ جيدًا</em> نادرًا ما يُرفض.',
-  'hero.sub': 'نُجهّز ملفكم من الألف إلى الياء لفرنسا وإيطاليا وإسبانيا ومالطا وكندا — سياحة، عمل، دراسة أو لمّ شمل عائلي. أنتم ترسلون مستنداتكم، ونحن نتكفّل بالباقي.',
+  'hero.sub': 'نُجهّز ملفكم من الألف إلى الياء لفرنسا وإيطاليا وإسبانيا ومالطا وكندا وألبانيا وسويسرا واليونان — سياحة، عمل، دراسة أو لمّ شمل عائلي. أنتم ترسلون مستنداتكم، ونحن نتكفّل بالباقي.',
   'hero.cta1': 'شاهد السعر والمستندات المطلوبة ←',
   'hero.cta2': 'راسلنا على واتساب',
   'hero.reassure1': 'مجاني وبدون التزام',
   'hero.reassure2': 'الرد في أقل من ساعة، من 8 صباحًا إلى 8 مساءً',
   'hero.reassure3': 'السعر مُعلن قبل البدء',
-  'hero.badge1': 'فرنسا · إيطاليا · إسبانيا · مالطا · كندا',
+  'hero.badge1': 'فرنسا · إيطاليا · إسبانيا · مالطا · كندا · +3',
   'hero.badge2': '100% من الملفات مُدقّقة',
   'hero.badge3': 'الرد خلال ساعة · من 8 إلى 20',
   'video.unsupported': 'متصفحكم لا يدعم تشغيل الفيديو.',
   'video.error': 'تعذّر تحميل الفيديو. تحققوا من اتصالكم بالإنترنت أو راسلونا مباشرة.',
   'destinations.label': 'الوجهات المتاحة',
-  'destinations.title': 'خمس دول، جميع فئات التأشيرات',
+  'destinations.title': 'ثماني دول، جميع فئات التأشيرات',
   'destinations.hint': '👆 اضغطوا على دولة لبدء المحاكاة بهذه الوجهة.',
   'stamp.france': 'فرنسا',
   'stamp.cat': 'جميع الفئات',
@@ -80,6 +80,9 @@ var AR_DICT = {
   'stamp.espagne': 'إسبانيا',
   'stamp.malte': 'مالطا',
   'stamp.canada': 'كندا',
+  'stamp.albanie': 'ألبانيا',
+  'stamp.suisse': 'سويسرا',
+  'stamp.grece': 'اليونان',
   'services.label': 'ما نُجهّزه لكم',
   'services.title': 'خدمة كاملة، دولة بدولة',
   'service.france.title': 'تأشيرة فرنسا',
@@ -92,6 +95,12 @@ var AR_DICT = {
   'service.malte.desc': 'إقامة قصيرة، دراسة، عمل. ملف كامل ومتابعة حتى الإيداع.',
   'service.canada.title': 'تأشيرة كندا',
   'service.canada.desc': 'زيارة، دراسة (تصريح دراسة)، عمل مؤقت. استمارات IRCC والمستندات المطلوبة.',
+  'service.albanie.title': 'تأشيرة ألبانيا',
+  'service.albanie.desc': 'سياحة، عمل، دراسة. ألبانيا ليست ضمن منطقة شنغن: ملف وطلب تأشيرة خاصان بهذه الدولة.',
+  'service.suisse.title': 'تأشيرة سويسرا',
+  'service.suisse.desc': 'سياحة، دراسة، عمل. ملف شنغن مُجهّز وفق المتطلبات الخاصة بالقنصلية السويسرية.',
+  'service.grece.title': 'تأشيرة اليونان',
+  'service.grece.desc': 'سياحة، دراسة، عمل. تجهيز الملف والتحقق من المستندات وفق متطلبات القنصلية.',
   'service.timbres.title': 'الطوابع والمدفوعات',
   'service.timbres.desc': 'الطوابع الجبائية، مصاريف الملف، والمدفوعات الإلكترونية المرتبطة بطلبكم، نتكفّل بها نيابة عنكم.',
   'service.lettres.title': 'الرسائل والشهادات',
@@ -177,6 +186,9 @@ var AR_DICT = {
   'form.destination.espagne': 'إسبانيا 🇪🇸',
   'form.destination.malte': 'مالطا 🇲🇹',
   'form.destination.canada': 'كندا 🇨🇦',
+  'form.destination.albanie': 'ألبانيا 🇦🇱',
+  'form.destination.suisse': 'سويسرا 🇨🇭',
+  'form.destination.grece': 'اليونان 🇬🇷',
   'form.step2.label': '2. نوع التأشيرة',
   'form.visaType.placeholder': 'اختاروا نوع التأشيرة',
   'form.visaType.tourisme': 'سياحة / إقامة قصيرة شنغن',
@@ -214,7 +226,7 @@ var AR_DICT = {
   'faq2.q': 'كم من الوقت يستغرق تجهيز الملف؟',
   'faq2.a': 'يعتمد ذلك على الدولة ونوع التأشيرة، وخاصة على سرعتكم في تزويدنا بمستنداتكم. نُعطيكم مدة دقيقة منذ أول تواصل على واتساب.',
   'faq3.q': 'ما المستندات التي يجب أن أقدّمها؟',
-  'faq3.a': 'تختلف القائمة حسب الدولة (فرنسا، إيطاليا، إسبانيا، مالطا، كندا) وفئة التأشيرة (سياحة، عمل، دراسة، لمّ شمل عائلي). راسلونا بوضعيتكم على واتساب، ونرسل لكم القائمة الدقيقة.',
+  'faq3.a': 'تختلف القائمة حسب الدولة (فرنسا، إيطاليا، إسبانيا، مالطا، كندا، ألبانيا، سويسرا، اليونان) وفئة التأشيرة (سياحة، عمل، دراسة، لمّ شمل عائلي). راسلونا بوضعيتكم على واتساب، ونرسل لكم القائمة الدقيقة.',
   'faq4.q': 'كيف يتم دفع مقابل خدماتكم؟',
   'faq4.a': 'يُعلَن السعر قبل البدء، حسب الدولة وتعقيد الملف. مصاريف الطوابع والقنصلية منفصلة وتُبلَّغ لكم بوضوح.',
   'faq5.q': 'هل يجب الحضور شخصيًا أم يمكن إنجاز كل شيء عن بُعد؟',
@@ -233,7 +245,7 @@ var AR_DICT = {
   'faq11.a': 'لا. DocVisa Tunisie هي خدمة خاصة للمساعدة في الملفات الإدارية، مستقلة عن القنصليات والسفارات. ليس لدينا أي تواصل مميز أو تأثير على القرارات، وننصحكم بالحذر من أي شخص يدّعي عكس ذلك. قيمتنا تكمن في مكان آخر: ملف كامل، متماسك ومطابق.',
   'trust.label': 'لماذا نحن',
   'trust.title': 'جدية الملف هي ما يصنع الفرق',
-  'trust1': 'خمس وجهات مغطاة: فرنسا، إيطاليا، إسبانيا، مالطا، كندا',
+  'trust1': 'ثماني وجهات مغطاة: فرنسا، إيطاليا، إسبانيا، مالطا، كندا، ألبانيا، سويسرا، اليونان',
   'trust2': '100% من الملفات مُدقّقة قبل الإيداع، بدون أي مستند ناقص',
   'trust3': 'محاور واحد من البداية إلى النهاية، عبر واتساب',
   'finalcta.label': 'مستعدون للبدء',
@@ -667,14 +679,20 @@ var DESTINATION_NOTES = {
     Italie: "Le consulat italien est particulièrement attentif à l'itinéraire et aux réservations : elles doivent être cohérentes entre elles, dates comprises.",
     Espagne: "Les justificatifs de ressources sont examinés de près. Comptez un montant disponible correspondant à la durée complète du séjour.",
     Malte: "Le nombre de rendez-vous disponibles est limité ; mieux vaut préparer le dossier avant même d'avoir votre créneau.",
-    Canada: "La demande se dépose en ligne sur le portail IRCC : tout est numérisé, et les données biométriques sont à fournir séparément après le dépôt."
+    Canada: "La demande se dépose en ligne sur le portail IRCC : tout est numérisé, et les données biométriques sont à fournir séparément après le dépôt.",
+    Albanie: "L'Albanie n'appartient pas à l'espace Schengen : c'est un visa national propre à ce pays, avec ses propres justificatifs, indépendant d'un visa Schengen déjà obtenu.",
+    Suisse: "La Suisse fait partie de l'espace Schengen mais instruit ses propres demandes : le consulat suisse est particulièrement strict sur la cohérence des ressources et du motif du séjour.",
+    'Grèce': "Comme pour les autres pays Schengen, les justificatifs de réservation (vol, hébergement) et d'assurance voyage doivent couvrir l'intégralité du séjour, sans écart de dates."
   },
   ar: {
     France: "الإيداع عبر مركز معتمد (TLScontact / VFS). تأكدوا من ترجمة كل المستندات باللغة العربية إلى الفرنسية من طرف مترجم محلّف.",
     Italie: "القنصلية الإيطالية دقيقة جدًا بخصوص برنامج السفر والحجوزات: يجب أن تكون متطابقة فيما بينها، بما في ذلك التواريخ.",
     Espagne: "تُفحص إثباتات الموارد المالية عن قرب. يجب توفر مبلغ متاح يتناسب مع كامل مدة الإقامة.",
     Malte: "عدد المواعيد المتاحة محدود؛ من الأفضل تجهيز الملف حتى قبل الحصول على الموعد.",
-    Canada: "يتم تقديم الطلب إلكترونيًا عبر بوابة IRCC: كل شيء رقمي، وتُقدَّم البيانات البيومترية بشكل منفصل بعد الإيداع."
+    Canada: "يتم تقديم الطلب إلكترونيًا عبر بوابة IRCC: كل شيء رقمي، وتُقدَّم البيانات البيومترية بشكل منفصل بعد الإيداع.",
+    Albanie: "ألبانيا ليست ضمن منطقة شنغن: الأمر يتعلق بتأشيرة وطنية خاصة بهذه الدولة، بمستنداتها الخاصة، ومستقلة عن أي تأشيرة شنغن سابقة.",
+    Suisse: "سويسرا جزء من منطقة شنغن لكنها تدرس طلباتها بشكل مستقل: القنصلية السويسرية دقيقة بشكل خاص بخصوص تماسك الموارد المالية ودافع الإقامة.",
+    'Grèce': "كما هو الحال في باقي دول شنغن، يجب أن تغطي إثباتات الحجز (الطيران، الإقامة) والتأمين على السفر كامل مدة الإقامة، دون أي فرق في التواريخ."
   }
 };
 
@@ -999,7 +1017,10 @@ var STAMP_ARIA_LABELS = {
   Italie: { fr: 'Simuler un dossier pour Italie', ar: 'محاكاة ملف لإيطاليا' },
   Espagne: { fr: 'Simuler un dossier pour Espagne', ar: 'محاكاة ملف لإسبانيا' },
   Malte: { fr: 'Simuler un dossier pour Malte', ar: 'محاكاة ملف لمالطا' },
-  Canada: { fr: 'Simuler un dossier pour Canada', ar: 'محاكاة ملف لكندا' }
+  Canada: { fr: 'Simuler un dossier pour Canada', ar: 'محاكاة ملف لكندا' },
+  Albanie: { fr: 'Simuler un dossier pour Albanie', ar: 'محاكاة ملف لألبانيا' },
+  Suisse: { fr: 'Simuler un dossier pour Suisse', ar: 'محاكاة ملف لسويسرا' },
+  'Grèce': { fr: 'Simuler un dossier pour Grèce', ar: 'محاكاة ملف لليونان' }
 };
 
 function updateStampLabels() {
@@ -1150,7 +1171,10 @@ var WEATHER_DESTINATIONS = {
   Italie: { cityFr: 'Rome', cityAr: 'روما', lat: 41.9028, lon: 12.4964, countryFr: 'Italie', countryAr: 'إيطاليا', flag: '🇮🇹' },
   Espagne: { cityFr: 'Madrid', cityAr: 'مدريد', lat: 40.4168, lon: -3.7038, countryFr: 'Espagne', countryAr: 'إسبانيا', flag: '🇪🇸' },
   Malte: { cityFr: 'La Valette', cityAr: 'لا فاليت', lat: 35.8989, lon: 14.5146, countryFr: 'Malte', countryAr: 'مالطا', flag: '🇲🇹' },
-  Canada: { cityFr: 'Montréal', cityAr: 'مونتريال', lat: 45.5017, lon: -73.5673, countryFr: 'Canada', countryAr: 'كندا', flag: '🇨🇦' }
+  Canada: { cityFr: 'Montréal', cityAr: 'مونتريال', lat: 45.5017, lon: -73.5673, countryFr: 'Canada', countryAr: 'كندا', flag: '🇨🇦' },
+  Albanie: { cityFr: 'Tirana', cityAr: 'تيرانا', lat: 41.3275, lon: 19.8187, countryFr: 'Albanie', countryAr: 'ألبانيا', flag: '🇦🇱' },
+  Suisse: { cityFr: 'Berne', cityAr: 'برن', lat: 46.9480, lon: 7.4474, countryFr: 'Suisse', countryAr: 'سويسرا', flag: '🇨🇭' },
+  'Grèce': { cityFr: 'Athènes', cityAr: 'أثينا', lat: 37.9838, lon: 23.7275, countryFr: 'Grèce', countryAr: 'اليونان', flag: '🇬🇷' }
 };
 
 var WEATHER_DESCRIPTIONS = {
@@ -1413,7 +1437,7 @@ function renderWeather(country, data) {
 
   var weatherType = getWeatherType(weatherCode);
   if (dashboard) {
-    dashboard.className = dashboard.className.replace(/\bweather-\w+\b/g, '');
+    dashboard.classList.remove('weather-sunny', 'weather-cloudy', 'weather-rainy', 'weather-snowy', 'weather-stormy');
     dashboard.classList.add('weather-' + weatherType);
   }
 
