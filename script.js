@@ -11,7 +11,7 @@
   }, MIN_DISPLAY_MS);
 })();
 
-var WHATSAPP_NUMBER = '21653117158';
+var WHATSAPP_NUMBER = '21627812399';
 
 var animatedSections = [
   document.querySelector('.hero'),
@@ -117,7 +117,7 @@ var AR_DICT = {
   'engage.interlocuteur.desc': 'من أول رسالة على واتساب إلى غاية إنجاز الملف، تتحدثون دائمًا مع نفس الشخص.',
   'info.where.label': 'أين نجدنا',
   'info.where.title': 'أريانة، تونس',
-  'info.where.desc': 'خدمة مقرّها بوبليكنات أريانة. تواصل عن بُعد عبر واتساب، مع إمكانية الحضور شخصيًا للمستندات الأصلية أو التوقيعات.',
+  'info.where.desc': 'خدمة مقرّها أريانة. تواصل عن بُعد عبر واتساب، مع إمكانية الحضور شخصيًا للمستندات الأصلية أو التوقيعات.',
   'info.hours.label': 'التوفر',
   'info.hours.title': 'من 8 صباحًا إلى 8 مساءً، كل أيام العمل',
   'info.hours.desc': 'رد سريع على واتساب من 8 صباحًا إلى 8 مساءً. خارج هذا التوقيت، تتم معالجة رسالتكم فور استئناف العمل.',
@@ -131,7 +131,7 @@ var AR_DICT = {
   'process.step3.desc': 'الاستمارات مُعبأة، المدفوعات منجزة، الموعد محجوز عند الحاجة. لم يبقَ سوى الحضور.',
   'about.label': 'من يُجهّز ملفكم',
   'about.title': 'دقة مهندس، مُطبّقة على مستنداتكم.',
-  'about.h3': 'مقرّي بالبوبليكنات، على تماس يومي مع الملفات',
+  'about.h3': 'مقرّي بأريانة، على تماس يومي مع الملفات',
   'about.p1': 'أتعامل يوميًا مع المدفوعات الإلكترونية والطوابع والتقارير الإدارية. تجهيز ملفات التأشيرة يتطلب نفس الدقة: كل مستند مُدقق، وكل استمارة مُراجعة قبل الإرسال.',
   'about.p2': 'تكوين في الهندسة الإعلامية — معتاد على اتباع إجراءات صارمة وعدم ترك أي شيء للصدفة، وهو أمر مهم بشكل خاص في ملف قنصلي.',
   'about.point1': 'تحقق منهجي من قائمة المستندات قبل أي إيداع، لتفادي الرفض بسبب ملف ناقص.',
@@ -251,7 +251,7 @@ var AR_DICT = {
   'finalcta.label': 'مستعدون للبدء',
   'finalcta.title': 'أرسلوا لنا رسالة، ونحن نُجهّز ملفكم.',
   'finalcta.button': 'راسلنا على واتساب ←',
-  'finalcta.contact': '+216 53 117 158 · أريانة، تونس',
+  'finalcta.contact': '+216 27 812 399 · أريانة، تونس',
   'footer.brand': 'DocVisa Tunisie',
   'footer.disclaimer': 'مساعدة إدارية — ليست جهة قنصلية رسمية',
   'whatsapp.float': 'تواصل مباشر',
@@ -1243,6 +1243,28 @@ var WEATHER_DESCRIPTIONS = {
 var CACHE_PREFIX = 'docvisa-weather-';
 var CACHE_EXPIRY = 30 * 60 * 1000; // 30 mins
 var activeWeatherCountry = 'France';
+var weatherUtcOffset = 0;
+var weatherClockInterval = null;
+
+function pad2(n) {
+  return (n < 10 ? '0' : '') + n;
+}
+
+function updateWeatherClock() {
+  var todayTime = document.getElementById('todayTime');
+  if (!todayTime) return;
+  var now = new Date();
+  var nowUtcMs = now.getTime() + now.getTimezoneOffset() * 60000;
+  var local = new Date(nowUtcMs + weatherUtcOffset * 1000);
+  todayTime.textContent = pad2(local.getUTCHours()) + ':' + pad2(local.getUTCMinutes());
+}
+
+function startWeatherClock(utcOffsetSeconds) {
+  weatherUtcOffset = utcOffsetSeconds || 0;
+  updateWeatherClock();
+  if (weatherClockInterval) clearInterval(weatherClockInterval);
+  weatherClockInterval = setInterval(updateWeatherClock, 1000);
+}
 
 function getWeatherType(code) {
   if (code === 0 || code === 1) return 'sunny';
@@ -1420,6 +1442,8 @@ function renderWeather(country, data) {
   if (todayDate) {
     todayDate.textContent = currentDate.toLocaleDateString(currentLang, { weekday: 'long', day: 'numeric', month: 'long' });
   }
+
+  startWeatherClock(data.utc_offset_seconds);
 
   if (todayTemp) todayTemp.textContent = Math.round(current.temperature_2m) + '°C';
 
