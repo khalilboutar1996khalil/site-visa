@@ -1071,11 +1071,11 @@
   }
 
   /* FAQ */
-  .faq-list{margin-top:48px;border-top:1px solid var(--line);}
+  .faq-list{margin-top:24px;padding-top:48px;border-top:1px solid var(--line);}
   .faq-item{border-bottom:1px solid var(--line);}
   .faq-item summary{
     list-style:none;cursor:pointer;
-    padding:24px 0;
+    padding:24px 24px;
     display:flex;justify-content:space-between;align-items:center;gap:20px;
     font-family:'Poppins',sans-serif;font-size:17px;color:var(--navy);font-weight:600;
   }
@@ -1095,7 +1095,7 @@
   }
   .faq-item[open] summary::after{transform:rotate(45deg);}
   .faq-item .faq-a{
-    padding:0 0 26px;font-size:14.5px;color:#4A4A44;max-width:620px;
+    padding:0 24px 26px;font-size:14.5px;color:#4A4A44;max-width:620px;
   }
   body[data-theme="dark"] .faq-item .faq-a{
     color:#B4C3DD;
@@ -1429,7 +1429,7 @@
     h2{font-size:26px;}
     .service-card{padding:26px 22px;}
     .about-badge{width:54px;height:54px;font-size:19px;}
-    .faq-item summary{font-size:15.5px;padding:20px 0;gap:12px;}
+    .faq-item summary{font-size:15.5px;padding:20px 18px;gap:12px;}
     .trust-card .big{font-size:32px;}
     .final-cta .btn-primary{padding:16px 28px;font-size:15px;}
   }
