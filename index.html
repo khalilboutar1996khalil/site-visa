@@ -16,6 +16,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230D2342'/%3E%3Ctext x='32' y='42' font-family='Poppins,Arial,sans-serif' font-size='26' font-weight='700' fill='%23E5D0AC' text-anchor='middle'%3EDV%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Cairo:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
@@ -159,6 +160,67 @@
       <div class="stamp gr" data-tilt="-6" data-country="Grèce">
         <svg class="stamp-flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#0D5EAF"/><rect y="2.2" width="30" height="2.2" fill="#fff"/><rect y="6.7" width="30" height="2.2" fill="#fff"/><rect y="11.1" width="30" height="2.2" fill="#fff"/><rect y="15.6" width="30" height="2.2" fill="#fff"/><rect width="12" height="12" fill="#0D5EAF"/><rect x="4.8" width="2.4" height="12" fill="#fff"/><rect y="4.8" width="12" height="2.4" fill="#fff"/></svg>
         <span class="flag">ΕΛΛΑΣ</span><span class="country" data-i18n="stamp.grece">Grèce</span><span class="cat" data-i18n="stamp.cat">Toutes catégories</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="postcards" aria-label="Aperçu des destinations">
+  <div class="wrap">
+    <div class="postcards-swiper swiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide postcard-slide">
+          <img class="postcard-art" src="assets/destinations/france.jpg" alt="La tour Eiffel à Paris, France" loading="lazy">
+          <div class="postcard-caption">
+            <span class="postcard-country" data-i18n="stamp.france">France</span>
+            <span class="postcard-mood" data-i18n="postcard.france">Paris s'illumine à la tombée du jour</span>
+          </div>
+        </div>
+
+        <div class="swiper-slide postcard-slide">
+          <img class="postcard-art" src="assets/destinations/italy.jpg" alt="Canal de Venise, Italie" loading="lazy">
+          <div class="postcard-caption">
+            <span class="postcard-country" data-i18n="stamp.italie">Italie</span>
+            <span class="postcard-mood" data-i18n="postcard.italie">Rome, deux mille ans d'histoire à ciel ouvert</span>
+          </div>
+        </div>
+
+        <div class="swiper-slide postcard-slide">
+          <img class="postcard-art" src="assets/destinations/spain.jpg" alt="Barcelone au crépuscule, Espagne" loading="lazy">
+          <div class="postcard-caption">
+            <span class="postcard-country" data-i18n="stamp.espagne">Espagne</span>
+            <span class="postcard-mood" data-i18n="postcard.espagne">Barcelone, la lumière de la Sagrada Família</span>
+          </div>
+        </div>
+
+        <div class="swiper-slide postcard-slide">
+          <img class="postcard-art" src="assets/destinations/malta.jpg" alt="Baie de La Valette, Malte" loading="lazy">
+          <div class="postcard-caption">
+            <span class="postcard-country" data-i18n="stamp.malte">Malte</span>
+            <span class="postcard-mood" data-i18n="postcard.malte">La Valette, l'éclat de la Méditerranée</span>
+          </div>
+        </div>
+
+        <div class="swiper-slide postcard-slide">
+          <img class="postcard-art" src="assets/destinations/canada.jpg" alt="Château Frontenac à Québec, Canada" loading="lazy">
+          <div class="postcard-caption">
+            <span class="postcard-country" data-i18n="stamp.canada">Canada</span>
+            <span class="postcard-mood" data-i18n="postcard.canada">Les Rocheuses sous les aurores</span>
+          </div>
+        </div>
+
+        <div class="swiper-slide postcard-slide">
+          <img class="postcard-art" src="assets/destinations/greece.jpg" alt="Églises aux dômes bleus de Santorin, Grèce" loading="lazy">
+          <div class="postcard-caption">
+            <span class="postcard-country" data-i18n="stamp.grece">Grèce</span>
+            <span class="postcard-mood" data-i18n="postcard.grece">Santorin, le bleu infini de l'Égée</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev" aria-label="Précédent"></div>
+      <div class="swiper-button-next" aria-label="Suivant"></div>
     </div>
   </div>
 </section>
@@ -674,6 +736,7 @@
     <span>💬</span>
     <strong data-i18n="whatsapp.float">Contact direct</strong>
   </a>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -83,6 +83,12 @@ var AR_DICT = {
   'stamp.albanie': 'ألبانيا',
   'stamp.suisse': 'سويسرا',
   'stamp.grece': 'اليونان',
+  'postcard.france': 'باريس تتلألأ عند الغروب',
+  'postcard.italie': 'روما، ألفا عام من التاريخ تحت السماء',
+  'postcard.espagne': 'برشلونة، بريق ساغرادا فاميليا',
+  'postcard.malte': 'فاليتا، بريق البحر الأبيض المتوسط',
+  'postcard.canada': 'جبال الروكي تحت الأضواء الشمالية',
+  'postcard.grece': 'سانتوريني، زرقة إيجة اللانهائية',
   'services.label': 'ما نُجهّزه لكم',
   'services.title': 'خدمة كاملة، دولة بدولة',
   'service.france.title': 'تأشيرة فرنسا',
@@ -1047,6 +1053,28 @@ stamps.forEach(function (stamp) {
   });
 });
 
+// Carrousel 3D d'ambiance (cartes postales, purement visuel, pas de sélection au clic)
+var postcardsSwiper = null;
+function initPostcardsSwiper() {
+  var el = document.querySelector('.postcards-swiper');
+  if (!el || typeof Swiper === 'undefined') return;
+  if (postcardsSwiper) postcardsSwiper.destroy(true, true);
+  postcardsSwiper = new Swiper(el, {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    loop: true,
+    slidesPerView: 'auto',
+    spaceBetween: 28,
+    coverflowEffect: { rotate: 30, stretch: 0, depth: 140, modifier: 1, slideShadows: false },
+    autoplay: { delay: 3200, disableOnInteraction: false, pauseOnMouseEnter: true },
+    keyboard: { enabled: true },
+    pagination: { el: '.postcards-swiper .swiper-pagination', clickable: true },
+    navigation: { nextEl: '.postcards-swiper .swiper-button-next', prevEl: '.postcards-swiper .swiper-button-prev' }
+  });
+}
+initPostcardsSwiper();
+
 // ---- Bandeau vidéo (remplace l'ancien slider photo) ----
 var destVideoEl = document.querySelector('.dest-video-banner-el');
 if (destVideoEl) {
@@ -1144,6 +1172,7 @@ function setLanguage(lang) {
   applyTheme(document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
 
   updateStampLabels();
+  initPostcardsSwiper();
 
   if (dest_type_profile_complete()) {
     updateSimulator(true); // true = on préserve les cases déjà cochées
