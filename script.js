@@ -272,7 +272,8 @@ var AR_DICT = {
   'weather.forecast_5d': 'توقعات 5 أيام',
   'weather.loading': 'جاري تحميل أحوال الطقس...',
   'weather.error': 'تعذر تحميل بيانات الطقس. يرجى التحقق من اتصالكم.',
-  'weather.preview_title': 'الطقس في وجهتكم'
+  'weather.preview_title': 'الطقس في وجهتكم',
+  'doc.hide_checked': 'إخفاء الوثائق المحددة'
 };
 
 var AR_ATTR = {
@@ -444,87 +445,9 @@ if (navTargets.length) {
   syncActiveLink();
 }
 
-// Video popup modal
-var modal = document.getElementById('videoModal');
-var modalVideo = document.getElementById('modalVideo');
-var openBtn = document.getElementById('openVideoModal');
-var closeBtn = document.getElementById('closeVideoModal');
-var videoSpinner = document.getElementById('videoSpinner');
-var videoError = document.getElementById('videoError');
-var lastFocusedBeforeModal = null;
-
-// La vidéo n'est plus préchargée (preload="metadata") pour ne pas faire télécharger
-// 2 Mo à chaque visiteur qui ne clique jamais dessus : l'anneau comble donc le temps
-// de mise en mémoire tampon au premier clic, et réapparaît si le débit faiblit en cours de lecture.
-if (modalVideo) {
-  modalVideo.addEventListener('playing', function () {
-    if (videoSpinner) videoSpinner.classList.remove('show');
-  });
-  modalVideo.addEventListener('waiting', function () {
-    if (videoSpinner) videoSpinner.classList.add('show');
-  });
-  modalVideo.addEventListener('error', function () {
-    if (videoSpinner) videoSpinner.classList.remove('show');
-    if (videoError) videoError.classList.add('show');
-  });
-}
-
-function openModal() {
-  if (!modal || !modalVideo) return;
-  lastFocusedBeforeModal = document.activeElement;
-  modal.classList.add('open');
-  if (videoError) videoError.classList.remove('show');
-  if (videoSpinner) videoSpinner.classList.add('show');
-  modalVideo.muted = false;
-  modalVideo.volume = 1;
-  try { modalVideo.currentTime = 0; } catch (e) { }
-  var p = modalVideo.play();
-  if (p && p.catch) {
-    p.catch(function () {
-      // Browser blocked unmuted autoplay: retry muted, then let the person unmute via controls
-      modalVideo.muted = true;
-      modalVideo.play().catch(function () {
-        if (videoSpinner) videoSpinner.classList.remove('show');
-      });
-    });
-  }
-  document.body.style.overflow = 'hidden';
-  if (closeBtn) closeBtn.focus();
-}
-function closeModal() {
-  if (!modal || !modalVideo) return;
-  if (!modal.classList.contains('open')) return;
-  modal.classList.remove('open');
-  modalVideo.pause();
-  if (videoSpinner) videoSpinner.classList.remove('show');
-  document.body.style.overflow = '';
-  // On rend le clavier au bouton qui a ouvert la vidéo
-  if (lastFocusedBeforeModal && lastFocusedBeforeModal.focus) lastFocusedBeforeModal.focus();
-  lastFocusedBeforeModal = null;
-}
-if (openBtn) openBtn.addEventListener('click', openModal);
-if (closeBtn) closeBtn.addEventListener('click', closeModal);
-if (modal) modal.addEventListener('click', function (e) {
-  if (e.target === modal) closeModal();
-});
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
-    closeModal();
     closeNav();
-  }
-  // Tant que la vidéo est ouverte, la tabulation reste dans la fenêtre
-  if (e.key === 'Tab' && modal && modal.classList.contains('open')) {
-    var focusables = modal.querySelectorAll('button, video[controls], [href], [tabindex]:not([tabindex="-1"])');
-    if (!focusables.length) return;
-    var first = focusables[0];
-    var last = focusables[focusables.length - 1];
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault();
-      last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault();
-      first.focus();
-    }
   }
 });
 
@@ -542,6 +465,7 @@ var resultDocs = document.getElementById('resultDocs');
 var docProgress = document.getElementById('docProgress');
 var copyDocsBtn = document.getElementById('copyDocsBtn');
 var printDocsBtn = document.getElementById('printDocsBtn');
+var hideCheckedDocs = document.getElementById('hideCheckedDocs');
 var simProgressFill = document.getElementById('simProgressFill');
 var simProgressText = document.getElementById('simProgressText');
 var simProgress = document.getElementById('simProgress');
@@ -817,9 +741,11 @@ function renderDocs(docs, preserveChecked) {
     if (preserveChecked && preserveChecked[i]) {
       box.checked = true;
       label.classList.add('done');
+      li.classList.add('done');
     }
     box.addEventListener('change', function () {
       label.classList.toggle('done', box.checked);
+      li.classList.toggle('done', box.checked);
       updateDocProgress();
     });
 
@@ -882,9 +808,8 @@ function updateSimulator(preserveDocState) {
     }
 
     var profileDocs = DOC_DATABASE[currentLang].profiles[prof] || [];
-    var typeDocs = DOC_DATABASE[currentLang].types[type] || [];
 
-    currentDocs = [].concat(BASE_DOCS[currentLang], profileDocs, typeDocs);
+    currentDocs = [].concat(BASE_DOCS[currentLang], profileDocs);
     renderDocs(currentDocs, previousChecked);
 
     if (resultCount) resultCount.textContent = docCountLabel(currentDocs.length);
@@ -943,6 +868,26 @@ if (simVisaType) simVisaType.addEventListener('change', function () { updateSimu
 if (simProfile) simProfile.addEventListener('change', function () { updateSimulator(); });
 if (simRefusal) simRefusal.addEventListener('change', function () { updateSimulator(); });
 updateProgressBar();
+
+// Gestion du toggle pour masquer les documents cochés
+var docSectionEl = document.querySelector('.documents-section');
+if (hideCheckedDocs && docSectionEl) {
+  var savedHidePref = localStorage.getItem('hideCheckedDocs') === 'true';
+  hideCheckedDocs.checked = savedHidePref;
+  if (savedHidePref) {
+    docSectionEl.classList.add('hide-completed');
+  }
+
+  hideCheckedDocs.addEventListener('change', function () {
+    if (hideCheckedDocs.checked) {
+      docSectionEl.classList.add('hide-completed');
+      localStorage.setItem('hideCheckedDocs', 'true');
+    } else {
+      docSectionEl.classList.remove('hide-completed');
+      localStorage.setItem('hideCheckedDocs', 'false');
+    }
+  });
+}
 
 // Copier la liste des documents
 function flashButton(btn, message) {

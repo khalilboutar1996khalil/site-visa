@@ -289,9 +289,8 @@
     0%,100%{border-radius:44% 56% 61% 39% / 49% 42% 58% 51%;}
     50%{border-radius:58% 42% 39% 61% / 41% 55% 45% 59%;}
   }
-  .avatar-btn{
+  .avatar-static{
     position:relative;z-index:2;
-    background:none;border:none;cursor:pointer;
     display:flex;flex-direction:column;align-items:center;gap:14px;
     padding:0;
   }
@@ -301,7 +300,6 @@
     display:flex;align-items:center;justify-content:center;
     box-shadow:0 24px 48px -20px rgba(13,35,66,0.25);
     position:relative;
-    transition:transform .25s ease;
   }
   body[data-theme="dark"] .avatar-frame{
     background:linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
@@ -311,35 +309,7 @@
     background:rgba(255,255,255,0.06);
     box-shadow:0 14px 30px -14px rgba(0,0,0,0.45);
   }
-  .avatar-btn:hover .avatar-frame{transform:scale(1.03);}
   .avatar-frame svg{width:190px;height:auto;}
-
-  /* Icône de lecture centrée sur l'illustration, sans texte ni chevauchement avec les badges flottants */
-  .play-badge{
-    position:absolute;top:50%;left:50%;
-    transform:translate(-50%,-50%);
-    width:60px;height:60px;border-radius:50%;
-    background:rgba(12,15,25,0.55);
-    backdrop-filter:blur(2px);
-    border:2px solid rgba(255,255,255,0.75);
-    display:flex;align-items:center;justify-content:center;
-    box-shadow:0 12px 28px -10px rgba(0,0,0,0.45);
-    transition:transform .2s ease, background .2s ease;
-  }
-  body[data-theme="dark"] .play-badge{
-    background:rgba(5,10,20,0.6);
-  }
-  .avatar-btn:hover .play-badge{
-    transform:translate(-50%,-50%) scale(1.08);
-    background:rgba(12,15,25,0.72);
-  }
-  .play-badge .tri{
-    width:0;height:0;margin-left:4px;
-    border-top:9px solid transparent;
-    border-bottom:9px solid transparent;
-    border-left:14px solid #fff;
-  }
-  html[dir="rtl"] .play-badge .tri{margin-left:0;margin-right:4px;}
   .float-badge{
     position:absolute;
     background:#fff;
@@ -371,70 +341,7 @@
     50%{transform:translateY(-10px);}
   }
 
-  /* Video modal */
-  .video-modal{
-    position:fixed;inset:0;z-index:100;
-    background:rgba(15,16,35,0.72);
-    backdrop-filter:blur(3px);
-    display:none;
-    align-items:center;justify-content:center;
-    padding:24px;
-  }
-  .video-modal.open{display:flex;}
-  .video-modal-inner{
-    position:relative;
-    width:100%;max-width:380px;
-    transform:scale(0.94) translateY(8px);
-    opacity:0;
-    transition:transform .32s cubic-bezier(.2,.9,.3,1.2), opacity .28s ease;
-  }
-  .video-modal.open .video-modal-inner{
-    transform:scale(1) translateY(0);
-    opacity:1;
-  }
-  .video-modal video{
-    width:100%;aspect-ratio:9/16;
-    border-radius:16px;
-    display:block;
-    background:#000;
-    object-fit:cover;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
-  }
-  .video-modal-close{
-    position:absolute;top:-44px;right:0;
-    width:34px;height:34px;border-radius:50%;
-    background:rgba(255,255,255,0.15);
-    color:#fff;border:none;cursor:pointer;
-    font-size:18px;line-height:1;
-  }
-  .video-modal-close:hover{background:rgba(255,255,255,0.28);}
 
-  /* Anneau de chargement affiché pendant la mise en mémoire tampon (preload="metadata" :
-     rien n'est téléchargé tant que la vidéo n'est pas ouverte) */
-  .video-modal-spinner{
-    position:absolute;top:50%;left:50%;
-    width:44px;height:44px;
-    margin:-22px 0 0 -22px;
-    border-radius:50%;
-    border:3px solid rgba(255,255,255,0.2);
-    border-top-color:var(--brass-light);
-    animation:loader-spin 0.85s linear infinite;
-    display:none;
-    pointer-events:none;
-  }
-  .video-modal-spinner.show{display:block;}
-
-  .video-modal-error{
-    position:absolute;inset:16px;
-    display:none;
-    flex-direction:column;align-items:center;justify-content:center;gap:16px;
-    text-align:center;padding:24px;
-    background:rgba(5,16,32,0.92);
-    border-radius:12px;
-  }
-  .video-modal-error.show{display:flex;}
-  .video-modal-error p{color:#F1EAE0;font-size:14px;line-height:1.6;}
-  .video-modal-error .btn-primary{padding:12px 22px;font-size:14px;}
 
   /* ============ Bandeau vidéo (contenu dans les mêmes marges que le reste du site) ============ */
   .dest-slider{
@@ -981,6 +888,15 @@
     padding-left: 24px;
     position: relative;
     color: rgba(255, 255, 255, 0.9);
+    max-height: 150px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.25s ease,
+                transform 0.25s ease,
+                margin-bottom 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                padding-top 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                padding-bottom 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .doc-list li::before {
     content: "✓";
@@ -1349,13 +1265,100 @@
   .btn-mini:hover{background:rgba(255,255,255,0.14);border-color:var(--brass-light);transform:translateY(-1px);}
   .btn-mini.done{background:rgba(34,197,94,0.22);border-color:rgba(34,197,94,0.5);color:#BBF7D0;}
 
+  /* ============ Options d'affichage des documents ============ */
+  .doc-head-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  
+  .toggle-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .toggle-switch input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .toggle-switch .slider {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s;
+  }
+
+  .toggle-switch .slider::before {
+    content: "";
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    left: 2px;
+    bottom: 2px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+
+  .toggle-switch input:checked + .slider {
+    background-color: var(--brass);
+    border-color: var(--brass);
+  }
+
+  .toggle-switch input:checked + .slider::before {
+    transform: translateX(16px);
+    background-color: var(--navy-deep);
+  }
+
+  .toggle-switch input:focus-visible + .slider {
+    outline: 2px solid var(--brass);
+    outline-offset: 2px;
+  }
+
+  .toggle-switch:hover .slider {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(229, 208, 172, 0.4);
+  }
+  .toggle-switch:hover input:checked + .slider {
+    background-color: var(--brass-light);
+    border-color: var(--brass-light);
+  }
+
+  /* Cache les documents terminés de façon fluide si l'option est cochée */
+  .documents-section.hide-completed .doc-list li.done {
+    max-height: 0 !important;
+    opacity: 0 !important;
+    transform: translateY(-8px) !important;
+    margin-bottom: -8px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    border-top-width: 0 !important;
+    border-bottom-width: 0 !important;
+    pointer-events: none !important;
+  }
+
   /* ============ Impression ============ */
   /* Le bouton « Imprimer » ne doit sortir que la fiche de documents,
      pas les onze sections de la page. */
   @media print{
     body > section:not(.consultation),
-    header, footer, .whatsapp-float, .video-modal, .page-loader,
-    .doc-actions, .contact-block, .form-foot,
+    header, footer, .whatsapp-float, .page-loader,
+    .doc-actions, .contact-block, .form-foot, .toggle-switch,
     .btn-primary, .btn-ghost{display:none !important;}
     .consultation{padding:0 !important;}
     .consultation .wrap{max-width:none;padding:0;}
@@ -1537,8 +1540,7 @@
     border-right:8px solid #fff;
   }
 
-  /* Bouton de fermeture de la modale vidéo */
-  html[dir="rtl"] .video-modal-close{right:auto;left:0;}
+
 
   /* Bulle WhatsApp flottante */
   html[dir="rtl"] .whatsapp-float{right:auto;left:22px;}
