@@ -90,7 +90,7 @@
       <div class="float-badge badge-2"><span class="fdot" style="background:#22C55E;"></span><span data-i18n="hero.badge2">100% dossiers vérifiés</span></div>
       <div class="float-badge badge-3"><span class="fdot" style="background:var(--brass);"></span><span data-i18n="hero.badge3">Réponse sous 1h · 8h–20h</span></div>
 
-      <button class="avatar-btn" id="openVideoModal" aria-label="Voir la vidéo de présentation" data-i18n-aria-label="hero.videoAria">
+      <div class="avatar-static">
         <div class="avatar-frame">
           <svg viewBox="0 0 260 340" xmlns="http://www.w3.org/2000/svg">
             <ellipse cx="130" cy="325" rx="70" ry="10" fill="var(--navy)" opacity="0.08"/>
@@ -108,27 +108,11 @@
             <circle cx="147" cy="78" r="3.6" fill="#16172B"/>
             <path d="M113 94 Q130 106 149 94" fill="none" stroke="#16172B" stroke-width="3.5" stroke-linecap="round"/>
           </svg>
-          <span class="play-badge" aria-hidden="true"><span class="tri"></span></span>
         </div>
-      </button>
+      </div>
     </div>
   </div>
 </section>
-
-<div class="video-modal" id="videoModal">
-  <div class="video-modal-inner">
-    <button class="video-modal-close" id="closeVideoModal" aria-label="Fermer" data-i18n-aria-label="video.close">✕</button>
-    <video id="modalVideo" controls playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 640'%3E%3Crect width='360' height='640' fill='%230D2342'/%3E%3Crect width='360' height='300' y='340' fill='%23051020'/%3E%3Ccircle cx='180' cy='300' r='56' fill='none' stroke='%23C59B63' stroke-width='2.5'/%3E%3Cpath d='M164 270 L164 330 L212 300 Z' fill='%23E5D0AC'/%3E%3Ctext x='180' y='410' font-family='Poppins,Arial,sans-serif' font-size='22' font-weight='700' fill='%23F5F1E7' text-anchor='middle'%3EDocVisa Tunisie%3C/text%3E%3C/svg%3E">
-      <source src="docvisa-video-bienvenue.mp4" type="video/mp4">
-      <span data-i18n="video.unsupported">Votre navigateur ne supporte pas la lecture vidéo.</span>
-    </video>
-    <div class="video-modal-spinner" id="videoSpinner" aria-hidden="true"></div>
-    <div class="video-modal-error" id="videoError" hidden>
-      <p data-i18n="video.error">La vidéo n'a pas pu être chargée. Vérifiez votre connexion ou contactez-nous directement.</p>
-      <a class="btn-primary" href="https://wa.me/21627812399" target="_blank" rel="noopener" data-i18n="header.whatsapp">WhatsApp</a>
-    </div>
-  </div>
-</div>
 
 <section class="destinations">
   <div class="wrap">
@@ -518,7 +502,14 @@
             <div class="documents-section">
               <div class="doc-head">
                 <h4 data-i18n="doc.head">Cochez ce que vous avez déjà :</h4>
-                <span class="doc-progress mono" id="docProgress">0 / 0</span>
+                <div class="doc-head-controls">
+                  <span class="doc-progress mono" id="docProgress">0 / 0</span>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="hideCheckedDocs">
+                    <span class="slider"></span>
+                    <span class="toggle-label" data-i18n="doc.hide_checked">Masquer les pièces cochées</span>
+                  </label>
+                </div>
               </div>
               <ul class="doc-list" id="resultDocs">
                 <!-- Populated dynamically via JS -->
