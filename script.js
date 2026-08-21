@@ -1587,6 +1587,42 @@ weatherTabs.forEach(function (tab) {
 activeWeatherCountry = 'France';
 selectWeatherTab(activeWeatherCountry, false);
 
+// ---- Initialisation de la Frise Chronologique Comment ça marche ----
+var stepBtns = document.querySelectorAll('.timeline-step-btn');
+var timelineCards = document.querySelectorAll('.timeline-card');
+var trackFill = document.getElementById('timelineTrackFill');
+
+if (stepBtns.length && timelineCards.length) {
+  stepBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var stepNum = parseInt(btn.getAttribute('data-step'), 10);
+      
+      // Mise à jour de la classe active et complétée sur les boutons
+      stepBtns.forEach(function (b) {
+        var bNum = parseInt(b.getAttribute('data-step'), 10);
+        b.classList.toggle('active', bNum === stepNum);
+        b.classList.toggle('completed', bNum < stepNum);
+      });
+      
+      // Mise à jour de la classe active sur les cartes de contenu
+      timelineCards.forEach(function (card, idx) {
+        card.classList.toggle('active', (idx + 1) === stepNum);
+      });
+      
+      // Mise à jour de la jauge de progression
+      if (trackFill) {
+        var fillPct = (stepNum - 1) / (stepBtns.length - 1) * 100;
+        trackFill.style.width = fillPct + '%';
+      }
+
+      // Défilement centré du bouton actif sur mobile
+      if (window.innerWidth <= 768) {
+        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    });
+  });
+}
+
 // ---- Initialisation de la langue ----
 captureFrenchStrings();
 var savedLang = localStorage.getItem('docvisa-lang');

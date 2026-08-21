@@ -288,18 +288,46 @@
   <div class="wrap">
     <div class="section-label mono" data-i18n="process.label">Comment ça marche</div>
     <h2 data-i18n="process.title">Trois étapes, un dossier propre</h2>
-    <div class="process-list">
-      <div class="process-item">
-        <div class="num">01</div>
-        <div><h3 data-i18n="process.step1.title">Vous nous écrivez sur WhatsApp</h3><p data-i18n="process.step1.desc">Dites-nous le pays et le type de visa. On vous répond avec la liste exacte des documents nécessaires.</p></div>
+    
+    <div class="timeline-container">
+      <!-- Track progress fill -->
+      <div class="timeline-track-wrapper">
+        <div class="timeline-track-bg"></div>
+        <div class="timeline-track-fill" id="timelineTrackFill"></div>
+        
+        <div class="timeline-steps">
+          <button type="button" class="timeline-step-btn active" data-step="1">
+            <span class="step-num">01</span>
+            <span class="step-label" data-i18n="process.step1.title">Vous nous écrivez sur WhatsApp</span>
+          </button>
+          <button type="button" class="timeline-step-btn" data-step="2">
+            <span class="step-num">02</span>
+            <span class="step-label" data-i18n="process.step2.title">Vous envoyez vos documents</span>
+          </button>
+          <button type="button" class="timeline-step-btn" data-step="3">
+            <span class="step-num">03</span>
+            <span class="step-label" data-i18n="process.step3.title">Dossier prêt à déposer</span>
+          </button>
+        </div>
       </div>
-      <div class="process-item">
-        <div class="num">02</div>
-        <div><h3 data-i18n="process.step2.title">Vous envoyez vos documents</h3><p data-i18n="process.step2.desc">Par WhatsApp ou en personne. On vérifie, complète et met en forme chaque pièce.</p></div>
-      </div>
-      <div class="process-item">
-        <div class="num">03</div>
-        <div><h3 data-i18n="process.step3.title">Dossier prêt à déposer</h3><p data-i18n="process.step3.desc">Formulaires remplis, paiements effectués, rendez-vous pris si nécessaire. Vous n'avez plus qu'à vous présenter.</p></div>
+
+      <!-- Detail cards for each step -->
+      <div class="timeline-content-wrapper">
+        <div class="timeline-card active" id="timelineCard1">
+          <div class="card-num">01</div>
+          <h3 data-i18n="process.step1.title">Vous nous écrivez sur WhatsApp</h3>
+          <p data-i18n="process.step1.desc">Dites-nous le pays et le type de visa. On vous répond avec la liste exacte des documents nécessaires.</p>
+        </div>
+        <div class="timeline-card" id="timelineCard2">
+          <div class="card-num">02</div>
+          <h3 data-i18n="process.step2.title">Vous envoyez vos documents</h3>
+          <p data-i18n="process.step2.desc">Par WhatsApp ou en personne. On vérifie, complète et met en forme chaque pièce.</p>
+        </div>
+        <div class="timeline-card" id="timelineCard3">
+          <div class="card-num">03</div>
+          <h3 data-i18n="process.step3.title">Dossier prêt à déposer</h3>
+          <p data-i18n="process.step3.desc">Formulaires remplis, paiements effectués, rendez-vous pris si nécessaire. Vous n'avez plus qu'à vous présenter.</p>
+        </div>
       </div>
     </div>
   </div>
